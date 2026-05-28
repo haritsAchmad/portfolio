@@ -1,27 +1,41 @@
 <template>
   <header id="hero" class="hero-section section">
-    <div class="container hero-container animate-fade-in">
-      <div class="hero-badge glass">
-        <span class="pulse-dot"></span>
-        Kontrak / Web Programmer at Universitas Indonesia
-      </div>
-      
-      <h1 class="hero-title">
-        Building Resilient Systems,<br/>
-        From <span class="text-glow legacy">Legacy</span> to <span class="text-glow modern">Modern SPA</span>
-      </h1>
-      
-      <p class="hero-desc">
-        Halo! Gw <strong>Harits Achmad Fauzan</strong>, lulusan <strong>Ilmu Komputer Terapan IPB University (IPK 3.54)</strong>. Saat ini gw aktif bekerja sebagai <strong>Web Programmer Kontrak di Universitas Indonesia</strong>. Gw terbiasa menangani spektrum web yang luas: mulai dari memelihara sistem kepegawaian berskala besar <strong>(Symfony 1, PHP 5.3, PostgreSQL 8.3)</strong> hingga merancang portal modern <strong>(Angular, TypeScript, PHP 7.4 API)</strong>.
-      </p>
+    <div class="container hero-wrapper animate-fade-in">
+      <!-- Left Column: Content -->
+      <div class="hero-content">
+        <div class="hero-badge glass">
+          <span class="pulse-dot"></span>
+          Kontrak / Web Programmer at Universitas Indonesia
+        </div>
+        
+        <h1 class="hero-title">
+          Building Resilient Systems,<br/>
+          From <span class="text-glow legacy">Legacy</span> to <span class="text-glow modern">Modern SPA</span>
+        </h1>
+        
+        <p class="hero-desc">
+          Halo! Gw <strong>Harits Achmad Fauzan</strong>, lulusan <strong>Ilmu Komputer Terapan IPB University (IPK 3.54)</strong>. Saat ini gw aktif bekerja sebagai <strong>Web Programmer Kontrak di Universitas Indonesia</strong>. Gw terbiasa menangani spektrum web yang luas: mulai dari memelihara sistem kepegawaian berskala besar <strong>(Symfony 1, PHP 5.3, PostgreSQL 8.3)</strong> hingga merancang portal modern <strong>(Angular, TypeScript, PHP 7.4 API)</strong>.
+        </p>
 
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
-        <a href="/Harits_Achmad_Fauzan_Resume.pdf" download class="btn btn-secondary btn-cv-mobile">Download CV (PDF)</a>
-        <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
+          <a href="/Harits_Achmad_Fauzan_Resume.pdf" download class="btn btn-secondary btn-cv-mobile">Download CV (PDF)</a>
+          <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+        </div>
       </div>
 
-      <div class="tech-strip glass">
+      <!-- Right Column: Avatar/Photo -->
+      <div class="hero-avatar-container">
+        <div class="avatar-glow"></div>
+        <div class="avatar-frame glass">
+          <img src="../assets/harits_photo.jpeg" alt="Foto Harits Achmad Fauzan" class="avatar-img" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech Strip Row -->
+    <div class="container tech-strip-container">
+      <div class="tech-strip glass animate-fade-in">
         <div class="tech-item"><span class="dot legacy"></span> PHP 5.3 / 7.4</div>
         <div class="tech-item"><span class="dot modern"></span> Angular / Vue.js</div>
         <div class="tech-item"><span class="dot symfony"></span> Symfony 1 & Laravel</div>
@@ -35,18 +49,80 @@
 <style scoped>
 .hero-section {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 90vh;
+  min-height: 100vh;
   padding-top: 8rem;
+  padding-bottom: 3rem;
   position: relative;
 }
 
-.hero-container {
+.hero-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.hero-content {
+  flex: 1.25;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.hero-avatar-container {
+  flex: 0.75;
+  display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+  position: relative;
+  max-width: 340px;
+  width: 100%;
+}
+
+.avatar-glow {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.avatar-frame {
+  position: relative;
+  z-index: 1;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: var(--transition-smooth);
+}
+
+.avatar-frame:hover {
+  transform: scale(1.03);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 24px 48px rgba(99, 102, 241, 0.2);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.avatar-frame:hover .avatar-img {
+  transform: scale(1.05);
 }
 
 .hero-badge {
@@ -82,6 +158,7 @@
   line-height: 1.15;
   letter-spacing: -0.04em;
   margin-bottom: 1.5rem;
+  color: var(--text-primary);
 }
 
 .text-glow {
@@ -100,9 +177,8 @@
 }
 
 .hero-desc {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   color: var(--text-secondary);
-  max-width: 800px;
   margin-bottom: 2.5rem;
   line-height: 1.75;
 }
@@ -114,7 +190,6 @@
 .hero-actions {
   display: flex;
   gap: 1rem;
-  margin-bottom: 4rem;
 }
 
 .btn {
@@ -157,13 +232,20 @@
   display: none; /* Desktop hides it, show on mobile */
 }
 
+.tech-strip-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .tech-strip {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5rem 2rem;
-  padding: 1rem 2rem;
+  padding: 1.1rem 2rem;
   border-radius: 16px;
+  width: 100%;
   max-width: 900px;
 }
 
@@ -188,9 +270,30 @@
 .dot.pg { background-color: #336791; }
 .dot.gis { background-color: var(--color-public); }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
+  .hero-wrapper {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hero-avatar-container {
+    max-width: 260px;
+  }
+  
+  .avatar-frame {
+    width: 240px;
+    height: 240px;
+  }
+  
   .hero-title {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
   
   .hero-desc {
