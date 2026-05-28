@@ -20,7 +20,7 @@ const handleFilterChange = (newFilter) => {
 };
 
 // GANTI KUNCI INI dengan Access Key gratis lu dari web3forms.com
-const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY"; 
+const WEB3FORMS_ACCESS_KEY = "15a15d16-7459-4afe-84b1-c2a5c5856c00"; 
 
 // Form state
 const contactForm = ref({
