@@ -19,6 +19,9 @@ const handleFilterChange = (newFilter) => {
   activeFilter.value = newFilter;
 };
 
+// GANTI KUNCI INI dengan Access Key gratis lu dari web3forms.com
+const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY"; 
+
 // Form state
 const contactForm = ref({
   name: '',
@@ -27,14 +30,55 @@ const contactForm = ref({
 });
 
 const formSubmitted = ref(false);
+const isSending = ref(false);
 
-const submitForm = () => {
-  if (contactForm.value.name && contactForm.value.email) {
-    formSubmitted.value = true;
+const submitForm = async () => {
+  if (!contactForm.value.name || !contactForm.value.email) return;
+  
+  // Jika masih menggunakan placeholder default, jalankan simulasi lokal
+  if (WEB3FORMS_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
+    isSending.value = true;
     setTimeout(() => {
-      formSubmitted.value = false;
-      contactForm.value = { name: '', email: '', message: '' };
-    }, 4000);
+      isSending.value = false;
+      formSubmitted.value = true;
+      setTimeout(() => {
+        formSubmitted.value = false;
+        contactForm.value = { name: '', email: '', message: '' };
+      }, 4000);
+    }, 1000);
+    return;
+  }
+
+  try {
+    isSending.value = true;
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        name: contactForm.value.name,
+        email: contactForm.value.email,
+        message: contactForm.value.message,
+        subject: "Pesan Baru dari Web Portofolio Harits.Dev"
+      }),
+    });
+    
+    if (response.ok) {
+      formSubmitted.value = true;
+      setTimeout(() => {
+        formSubmitted.value = false;
+        contactForm.value = { name: '', email: '', message: '' };
+      }, 4000);
+    } else {
+      alert("Oops! Terjadi kesalahan saat mengirim pesan ke server.");
+    }
+  } catch (error) {
+    alert("Oops! Terjadi gangguan jaringan saat mengirim pesan.");
+  } finally {
+    isSending.value = false;
   }
 };
 </script>
@@ -250,8 +294,9 @@ const submitForm = () => {
                 <label for="message">Pesan</label>
                 <textarea id="message" v-model="contactForm.message" rows="4" placeholder="Tulis pesan Anda di sini..." class="glass-input"></textarea>
               </div>
-              <div class="captcha-dummy" style="display:none"></div>
-              <button type="submit" class="submit-btn">Kirim Pesan</button>
+              <button type="submit" class="submit-btn" :disabled="isSending">
+                {{ isSending ? 'Mengirim...' : 'Kirim Pesan' }}
+              </button>
             </form>
             
             <div v-else class="success-message">
