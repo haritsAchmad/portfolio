@@ -109,7 +109,7 @@ const submitForm = async () => {
           <div class="about-bio glass">
             <h3 class="about-card-title">Pendidikan & Profil</h3>
             <p class="bio-text">
-              Saya adalah Lulusan
+              Saya adalah lulusan
               <strong
                 >Ilmu Komputer Terapan IPB University (IPK 3.54/4.00)</strong
               >
@@ -274,7 +274,7 @@ const submitForm = async () => {
         <h2 class="section-title">Portofolio Kerja</h2>
         <p class="section-subtitle">
           Pilihan proyek pengembangan perangkat lunak yang pernah saya kerjakan,
-          dari optimasi arsitektur warisan (legacy) hingga aplikasi modern.
+          dari pemeliharaan sistem legacy hingga pengembangan aplikasi modern.
         </p>
 
         <!-- Saringan Proyek -->
@@ -302,7 +302,7 @@ const submitForm = async () => {
         <h2 class="section-title">Kontak & Kolaborasi</h2>
         <p class="section-subtitle">
           Tertarik untuk berkolaborasi, mendiskusikan optimasi sistem lama, atau
-          integrasi frontend modern? Hubungi Saya sekarang!
+          integrasi frontend modern? Hubungi saya sekarang!
         </p>
 
         <div class="contact-grid">
