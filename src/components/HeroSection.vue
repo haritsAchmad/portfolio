@@ -14,7 +14,7 @@
         </h1>
         
         <p class="hero-desc">
-          Halo! Gw <strong>Harits Achmad Fauzan</strong>, lulusan <strong>Ilmu Komputer Terapan IPB University (IPK 3.54)</strong>. Saat ini gw aktif bekerja sebagai <strong>Web Programmer Kontrak di Universitas Indonesia</strong>. Gw terbiasa menangani spektrum web yang luas: mulai dari memelihara sistem kepegawaian berskala besar <strong>(Symfony 1, PHP 5.3, PostgreSQL 8.3)</strong> hingga merancang portal modern <strong>(Angular, TypeScript, PHP 7.4 API)</strong>.
+          Halo! Saya <strong>Harits Achmad Fauzan</strong>, lulusan <strong>Ilmu Komputer Terapan IPB University (IPK 3.54)</strong>. Saat ini gw aktif bekerja sebagai <strong>Web Programmer Kontrak di Universitas Indonesia</strong>. Gw terbiasa menangani spektrum web yang luas: mulai dari memelihara sistem kepegawaian berskala besar <strong>(Symfony 1, PHP 5.3, PostgreSQL 8.3)</strong> hingga merancang portal modern <strong>(Angular, TypeScript, PHP 7.4 API)</strong>.
         </p>
 
         <div class="hero-actions">
