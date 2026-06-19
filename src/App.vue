@@ -220,7 +220,7 @@ const submitForm = async () => {
                 <div class="timeline-marker sig-marker"></div>
                 <div class="timeline-content">
                   <span class="job-date">Juni 2024 - Februari 2025</span>
-                  <h4 class="job-role">Magang / IT Programmer</h4>
+                  <h4 class="job-role">IT Programmer Intern</h4>
                   <h5 class="job-company">PT Saraswanti Indo Genetech (SIG)</h5>
                   <ul class="job-details">
                     <li>
@@ -246,7 +246,7 @@ const submitForm = async () => {
                 <div class="timeline-marker sbrc-marker"></div>
                 <div class="timeline-content">
                   <span class="job-date">Februari 2024 - Mei 2024</span>
-                  <h4 class="job-role">Magang / Web Developer</h4>
+                  <h4 class="job-role">Web Developer Intern</h4>
                   <h5 class="job-company">SBRC IPB University</h5>
                   <ul class="job-details">
                     <li>
