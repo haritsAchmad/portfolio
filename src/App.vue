@@ -109,7 +109,7 @@ const submitForm = async () => {
           <div class="about-bio glass">
             <h3 class="about-card-title">Pendidikan & Profil</h3>
             <p class="bio-text">
-              Gw adalah Lulusan
+              Saya adalah Lulusan
               <strong
                 >Ilmu Komputer Terapan IPB University (IPK 3.54/4.00)</strong
               >
@@ -302,14 +302,14 @@ const submitForm = async () => {
         <h2 class="section-title">Kontak & Kolaborasi</h2>
         <p class="section-subtitle">
           Tertarik untuk berkolaborasi, mendiskusikan optimasi sistem lama, atau
-          integrasi frontend modern? Hubungi gw sekarang!
+          integrasi frontend modern? Hubungi Saya sekarang!
         </p>
 
         <div class="contact-grid">
           <div class="contact-info glass">
             <h3 class="info-title">Let's Connect</h3>
             <p class="info-desc">
-              Gw selalu terbuka untuk diskusi teknis seputar web development,
+              Saya selalu terbuka untuk diskusi teknis seputar web development,
               optimasi database, atau sekadar bertukar pikiran.
             </p>
 
@@ -403,7 +403,7 @@ const submitForm = async () => {
               <span class="success-icon">✓</span>
               <h3 class="success-title">Pesan Terkirim!</h3>
               <p class="success-desc">
-                Terima kasih atas pesan Anda, gw akan segera membalas email Anda
+                Terima kasih atas pesan Anda, Saya akan segera membalas email Anda
                 secepatnya.
               </p>
             </div>
