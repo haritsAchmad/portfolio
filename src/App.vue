@@ -1,18 +1,18 @@
 <script setup>
-import { ref, computed } from 'vue';
-import { projects } from './data/projects';
-import Navbar from './components/Navbar.vue';
-import HeroSection from './components/HeroSection.vue';
-import ProjectFilter from './components/ProjectFilter.vue';
-import ProjectCard from './components/ProjectCard.vue';
+import { ref, computed } from "vue";
+import { projects } from "./data/projects";
+import Navbar from "./components/Navbar.vue";
+import HeroSection from "./components/HeroSection.vue";
+import ProjectFilter from "./components/ProjectFilter.vue";
+import ProjectCard from "./components/ProjectCard.vue";
 
-const activeFilter = ref('all');
+const activeFilter = ref("all");
 
 const filteredProjects = computed(() => {
-  if (activeFilter.value === 'all') {
+  if (activeFilter.value === "all") {
     return projects;
   }
-  return projects.filter(p => p.category === activeFilter.value);
+  return projects.filter((p) => p.category === activeFilter.value);
 });
 
 const handleFilterChange = (newFilter) => {
@@ -20,13 +20,13 @@ const handleFilterChange = (newFilter) => {
 };
 
 // GANTI KUNCI INI dengan Access Key gratis lu dari web3forms.com
-const WEB3FORMS_ACCESS_KEY = "15a15d16-7459-4afe-84b1-c2a5c5856c00"; 
+const WEB3FORMS_ACCESS_KEY = "15a15d16-7459-4afe-84b1-c2a5c5856c00";
 
 // Form state
 const contactForm = ref({
-  name: '',
-  email: '',
-  message: ''
+  name: "",
+  email: "",
+  message: "",
 });
 
 const formSubmitted = ref(false);
@@ -34,7 +34,7 @@ const isSending = ref(false);
 
 const submitForm = async () => {
   if (!contactForm.value.name || !contactForm.value.email) return;
-  
+
   // Jika masih menggunakan placeholder default, jalankan simulasi lokal
   if (WEB3FORMS_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
     isSending.value = true;
@@ -43,7 +43,7 @@ const submitForm = async () => {
       formSubmitted.value = true;
       setTimeout(() => {
         formSubmitted.value = false;
-        contactForm.value = { name: '', email: '', message: '' };
+        contactForm.value = { name: "", email: "", message: "" };
       }, 4000);
     }, 1000);
     return;
@@ -62,15 +62,15 @@ const submitForm = async () => {
         name: contactForm.value.name,
         email: contactForm.value.email,
         message: contactForm.value.message,
-        subject: "Pesan Baru dari Web Portofolio Harits.Dev"
+        subject: "Pesan Baru dari Web Portofolio Harits.Dev",
       }),
     });
-    
+
     if (response.ok) {
       formSubmitted.value = true;
       setTimeout(() => {
         formSubmitted.value = false;
-        contactForm.value = { name: '', email: '', message: '' };
+        contactForm.value = { name: "", email: "", message: "" };
       }, 4000);
     } else {
       alert("Oops! Terjadi kesalahan saat mengirim pesan ke server.");
@@ -98,9 +98,10 @@ const submitForm = async () => {
     <!-- About & Experience Section -->
     <section id="about" class="section about-section">
       <div class="container animate-fade-in">
-        <h2 class="section-title">Tentang Gw & Pengalaman</h2>
+        <h2 class="section-title">Profil & Pengalaman</h2>
         <p class="section-subtitle">
-          Sekilas riwayat pendidikan, keahlian teknis, dan perjalanan karir profesional gw di industri pengembangan perangkat lunak.
+          Ringkasan pendidikan, keahlian teknis, dan pengalaman profesional
+          dalam pengembangan aplikasi web.
         </p>
 
         <div class="about-grid">
@@ -108,15 +109,25 @@ const submitForm = async () => {
           <div class="about-bio glass">
             <h3 class="about-card-title">Pendidikan & Profil</h3>
             <p class="bio-text">
-              Gw adalah lulusan <strong>Ilmu Komputer Terapan IPB University (IPK 3.54/4.00)</strong> angkatan 2021 - 2025. Memiliki ketertarikan mendalam dalam rekayasa perangkat lunak, pemrograman framework modern, dan optimasi arsitektur modular.
+              Gw adalah Lulusan
+              <strong
+                >Ilmu Komputer Terapan IPB University (IPK 3.54/4.00)</strong
+              >
+              dengan pengalaman dalam pengembangan aplikasi web, pemeliharaan
+              sistem legacy, integrasi database, dan digitalisasi proses bisnis
+              internal.
             </p>
-            
+
             <div class="edu-badge glass">
               <span class="edu-icon">🎓</span>
               <div class="edu-info">
                 <span class="edu-uni">IPB University</span>
-                <span class="edu-degree">Bachelor of Applied Computer Science</span>
-                <span class="edu-date">Agustus 2021 - Oktober 2025 (IPK 3.54)</span>
+                <span class="edu-degree"
+                  >Bachelor of Applied Computer Science</span
+                >
+                <span class="edu-date"
+                  >Agustus 2021 - Oktober 2025 (IPK 3.54)</span
+                >
               </div>
             </div>
 
@@ -145,7 +156,7 @@ const submitForm = async () => {
                 <div class="skill-tags">
                   <span class="skill-tag">PostgreSQL 8.3</span>
                   <span class="skill-tag">MySQL / MariaDB</span>
-                  <span class="skill-tag">Laragon Configuration</span>
+                  <span class="skill-tag">Laragon Dev Environment</span>
                   <span class="skill-tag">Git / SVN</span>
                 </div>
               </div>
@@ -161,12 +172,24 @@ const submitForm = async () => {
                 <div class="timeline-marker ui-marker"></div>
                 <div class="timeline-content">
                   <span class="job-date">Maret 2026 - Sekarang</span>
-                  <h4 class="job-role">Kontrak / Web Programmer</h4>
+                  <h4 class="job-role">Web Programmer (Contract)</h4>
                   <h5 class="job-company">Universitas Indonesia</h5>
                   <ul class="job-details">
-                    <li>Mentransformasikan proses bisnis manual ke format digital terpusat khusus untuk analisis jabatan (Anjab) di UI.</li>
-                    <li>Merancang dasbor visualisasi data kinerja pegawai (Sicakep) sebagai alat bantu pengambilan keputusan pimpinan.</li>
-                    <li>Membimbing dan melatih staf pegawai UI dalam mengoperasikan proses bisnis digital yang baru.</li>
+                    <li>
+                      Mengembangkan dan memelihara modul Analisis Jabatan
+                      (Anjab) untuk mendukung pemetaan jabatan, beban kerja, dan
+                      struktur organisasi internal.
+                    </li>
+                    <li>
+                      Mengimplementasikan fitur monitoring, pelaporan, dan
+                      pengelolaan data kepegawaian berbasis PHP, Symfony 1, dan
+                      PostgreSQL.
+                    </li>
+                    <li>
+                      Mendukung digitalisasi proses administrasi manual menjadi
+                      alur kerja terpusat yang lebih mudah ditelusuri dan
+                      dikelola.
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -176,11 +199,18 @@ const submitForm = async () => {
                 <div class="timeline-marker ui-marker"></div>
                 <div class="timeline-content">
                   <span class="job-date">September 2025 - Februari 2026</span>
-                  <h4 class="job-role">Magang / Web Programmer</h4>
+                  <h4 class="job-role">Web Programmer Intern</h4>
                   <h5 class="job-company">Universitas Indonesia</h5>
                   <ul class="job-details">
-                    <li>Mengembangkan modul awal instrumen kuesioner beban kerja berbasis web Symfony 1 & database PostgreSQL 8.3.</li>
-                    <li>Melakukan pemeliharaan berkala pada modul database kepegawaian berskala besar.</li>
+                    <li>
+                      Mengembangkan modul awal instrumen kuesioner beban kerja
+                      berbasis web menggunakan Symfony 1 dan PostgreSQL 8.3.
+                    </li>
+                    <li>
+                      Membantu pemeliharaan modul database kepegawaian serta
+                      penyesuaian fitur berdasarkan kebutuhan proses bisnis
+                      internal.
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -193,9 +223,20 @@ const submitForm = async () => {
                   <h4 class="job-role">Magang / IT Programmer</h4>
                   <h5 class="job-company">PT Saraswanti Indo Genetech (SIG)</h5>
                   <ul class="job-details">
-                    <li>Fokus pada pengembangan **modul SMS516** (membangun generator ekspor dokumen PDF dinamis `buat-export-pdf` dan fitur sinkronisasi `self-update-bio-attendance`).</li>
-                    <li>Merancang & mengembangkan Sistem Informasi Koperasi Karyawan internal (**Koperasig**) berbasis Angular frontend & PHP API backend.</li>
-                    <li>Melakukan konfigurasi server pengembangan lokal (Laragon) agar kompatibel berjalan lancar di PHP 7.4.</li>
+                    <li>
+                      Mengembangkan modul <strong>SMS516</strong>, termasuk
+                      generator ekspor PDF dinamis dan fitur sinkronisasi
+                      presensi mandiri.
+                    </li>
+                    <li>
+                      Merancang dan mengembangkan Sistem Informasi Koperasi
+                      Karyawan internal berbasis Angular frontend dan PHP API
+                      backend.
+                    </li>
+                    <li>
+                      Mengonfigurasi environment pengembangan lokal menggunakan
+                      Laragon agar kompatibel dengan PHP 7.4.
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -208,8 +249,16 @@ const submitForm = async () => {
                   <h4 class="job-role">Magang / Web Developer</h4>
                   <h5 class="job-company">SBRC IPB University</h5>
                   <ul class="job-details">
-                    <li>Merancang & membangun **SI Inventaris SBRC V.1.0.0** menggunakan framework **Laravel** pada environment **PHP 8.2+** & database MySQL.</li>
-                    <li>Mendigitalkan pelacakan alat dan bahan laboratorium riset surfaktan guna meminimalkan ketidaksesuaian stok laboratorium.</li>
+                    <li>
+                      Merancang dan membangun
+                      <strong>SI Inventaris SBRC V.1.0.0</strong> menggunakan
+                      <strong>Laravel</strong>, PHP 8.2+, dan MySQL.
+                    </li>
+                    <li>
+                      Mendigitalkan pencatatan alat dan bahan laboratorium riset
+                      untuk membantu pelacakan stok, peminjaman, dan
+                      ketersediaan aset.
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -224,20 +273,21 @@ const submitForm = async () => {
       <div class="container animate-fade-in">
         <h2 class="section-title">Portofolio Kerja</h2>
         <p class="section-subtitle">
-          Pilihan proyek pengembangan perangkat lunak yang pernah gw kerjakan, dari optimasi arsitektur warisan (legacy) hingga aplikasi modern.
+          Pilihan proyek pengembangan perangkat lunak yang pernah saya kerjakan,
+          dari optimasi arsitektur warisan (legacy) hingga aplikasi modern.
         </p>
 
         <!-- Saringan Proyek -->
-        <ProjectFilter 
-          :active-filter="activeFilter" 
-          @change-filter="handleFilterChange" 
+        <ProjectFilter
+          :active-filter="activeFilter"
+          @change-filter="handleFilterChange"
         />
 
         <!-- Grid Kartu Proyek -->
         <transition-group name="project-grid" tag="div" class="projects-grid">
-          <div 
-            v-for="project in filteredProjects" 
-            :key="project.id" 
+          <div
+            v-for="project in filteredProjects"
+            :key="project.id"
             class="grid-item"
           >
             <ProjectCard :project="project" />
@@ -251,58 +301,111 @@ const submitForm = async () => {
       <div class="container animate-fade-in">
         <h2 class="section-title">Kontak & Kolaborasi</h2>
         <p class="section-subtitle">
-          Tertarik untuk berkolaborasi, mendiskusikan optimasi sistem lama, atau integrasi frontend modern? Hubungi gw sekarang!
+          Tertarik untuk berkolaborasi, mendiskusikan optimasi sistem lama, atau
+          integrasi frontend modern? Hubungi gw sekarang!
         </p>
 
         <div class="contact-grid">
           <div class="contact-info glass">
             <h3 class="info-title">Let's Connect</h3>
-            <p class="info-desc">Gw selalu terbuka untuk diskusi teknis seputar web development, optimasi database, atau sekadar bertukar pikiran.</p>
-            
+            <p class="info-desc">
+              Gw selalu terbuka untuk diskusi teknis seputar web development,
+              optimasi database, atau sekadar bertukar pikiran.
+            </p>
+
             <div class="info-details">
               <div class="info-item">
                 <span class="info-icon">✉</span>
-                <span class="info-text"><a href="mailto:harits.achmad2003@gmail.com" class="contact-link">harits.achmad2003@gmail.com</a></span>
+                <span class="info-text"
+                  ><a
+                    href="mailto:harits.achmad2003@gmail.com"
+                    class="contact-link"
+                    >harits.achmad2003@gmail.com</a
+                  ></span
+                >
               </div>
               <div class="info-item">
                 <span class="info-icon">📞</span>
-                <span class="info-text"><a href="tel:+6281310083944" class="contact-link">+62 813-1008-3944</a></span>
+                <span class="info-text"
+                  ><a href="tel:+6281310083944" class="contact-link"
+                    >+62 813-1008-3944</a
+                  ></span
+                >
               </div>
               <div class="info-item">
                 <span class="info-icon">📍</span>
                 <span class="info-text">Bogor & Depok, Jawa Barat</span>
               </div>
             </div>
-            
+
             <div class="social-links">
-              <a href="https://github.com/haritsAchmad" target="_blank" rel="noopener noreferrer" class="social-link glass">GitHub</a>
-              <a href="https://www.linkedin.com/in/harits-achmad-fauzan-815b5926b/" target="_blank" rel="noopener noreferrer" class="social-link glass">LinkedIn</a>
+              <a
+                href="https://github.com/haritsAchmad"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link glass"
+                >GitHub</a
+              >
+              <a
+                href="https://www.linkedin.com/in/harits-achmad-fauzan-815b5926b/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link glass"
+                >LinkedIn</a
+              >
             </div>
           </div>
 
           <div class="contact-form-container glass">
-            <form v-if="!formSubmitted" @submit.prevent="submitForm" class="contact-form">
+            <form
+              v-if="!formSubmitted"
+              @submit.prevent="submitForm"
+              class="contact-form"
+            >
               <div class="form-group">
                 <label for="name">Nama</label>
-                <input type="text" id="name" v-model="contactForm.name" required placeholder="Nama Anda" class="glass-input" />
+                <input
+                  type="text"
+                  id="name"
+                  v-model="contactForm.name"
+                  required
+                  placeholder="Nama Anda"
+                  class="glass-input"
+                />
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" v-model="contactForm.email" required placeholder="email@contoh.com" class="glass-input" />
+                <input
+                  type="email"
+                  id="email"
+                  v-model="contactForm.email"
+                  required
+                  placeholder="email@contoh.com"
+                  class="glass-input"
+                />
               </div>
               <div class="form-group">
                 <label for="message">Pesan</label>
-                <textarea id="message" v-model="contactForm.message" rows="4" placeholder="Tulis pesan Anda di sini..." class="glass-input"></textarea>
+                <textarea
+                  id="message"
+                  v-model="contactForm.message"
+                  rows="4"
+                  placeholder="Tulis pesan Anda di sini..."
+                  class="glass-input"
+                ></textarea>
               </div>
               <button type="submit" class="submit-btn" :disabled="isSending">
-                {{ isSending ? 'Mengirim...' : 'Kirim Pesan' }}
+                {{ isSending ? "Mengirim..." : "Kirim Pesan" }}
               </button>
             </form>
-            
+
             <div v-else class="success-message">
               <span class="success-icon">✓</span>
               <h3 class="success-title">Pesan Terkirim!</h3>
-              <p class="success-desc">Terima kasih atas pesan Anda, gw akan segera membalas email Anda secepatnya.</p>
+              <p class="success-desc">
+                Terima kasih atas pesan Anda, gw akan segera membalas email Anda
+                secepatnya.
+              </p>
             </div>
           </div>
         </div>
@@ -485,9 +588,18 @@ const submitForm = async () => {
   border: 2px solid var(--text-muted);
 }
 
-.timeline-marker.ui-marker { border-color: var(--color-legacy); box-shadow: 0 0 8px var(--color-legacy); }
-.timeline-marker.sig-marker { border-color: var(--color-modern); box-shadow: 0 0 8px var(--color-modern); }
-.timeline-marker.sbrc-marker { border-color: var(--color-public); box-shadow: 0 0 8px var(--color-public); }
+.timeline-marker.ui-marker {
+  border-color: var(--color-legacy);
+  box-shadow: 0 0 8px var(--color-legacy);
+}
+.timeline-marker.sig-marker {
+  border-color: var(--color-modern);
+  box-shadow: 0 0 8px var(--color-modern);
+}
+.timeline-marker.sbrc-marker {
+  border-color: var(--color-public);
+  box-shadow: 0 0 8px var(--color-public);
+}
 
 .timeline-content {
   display: flex;
@@ -735,16 +847,16 @@ const submitForm = async () => {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-content {
     flex-direction: column;
     gap: 0.75rem;
