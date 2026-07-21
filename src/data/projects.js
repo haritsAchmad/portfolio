@@ -78,18 +78,18 @@ export const projects = [
   },
   {
     id: 5,
-    title: "SIG System (SMS516 & Koperasig)",
+    title: "Employee Self-Service & Cooperative Management Tools",
     category: "business-systems",
     categoryName: "Business Systems",
-    description: "Pengembangan modul sistem internal perusahaan dengan arsitektur Angular frontend dan PHP API backend untuk layanan mandiri karyawan dan administrasi koperasi.",
+    description: "Pengembangan beberapa tools internal untuk mendukung layanan mandiri karyawan, administrasi koperasi, pembaruan data, presensi, dan pembuatan dokumen PDF.",
     role: "IT Programmer Intern",
-    techStack: ["Angular", "TypeScript", "PHP 7.4", "REST API", "MySQL"],
+    techStack: ["Angular", "TypeScript", "PHP 7.4", "Lumen", "REST API", "MySQL"],
     features: [
-      "Merancang dan mengembangkan Sistem Informasi Koperasi internal perusahaan.",
-      "Mengembangkan fitur pembaruan data dan presensi mandiri pada modul kepegawaian.",
-      "Mengimplementasikan generator ekspor PDF dan menyiapkan environment pengembangan lokal."
+      "Merancang dan mengembangkan Sistem Informasi Manajemen Koperasi menggunakan Angular dan PHP/Lumen API.",
+      "Mengembangkan fitur pembaruan data dan sinkronisasi presensi mandiri pada modul kepegawaian.",
+      "Mengimplementasikan generator PDF dinamis serta menyiapkan environment pengembangan lokal."
     ],
-    impact: "Membantu digitalisasi layanan mandiri karyawan dan proses administrasi internal.",
+    impact: "Membantu mengurangi proses administrasi manual dan memusatkan beberapa kebutuhan layanan karyawan ke dalam aplikasi internal.",
     status: "Completed · Professional project",
     primaryTech: "Angular + PHP",
     colorClass: "glow-modern",
