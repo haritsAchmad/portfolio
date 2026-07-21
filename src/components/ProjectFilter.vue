@@ -6,13 +6,15 @@ defineProps({
   }
 });
 
-defineEmits(['change-filter']);
+defineEmits(["change-filter"]);
 
 const filters = [
-  { value: 'all', label: 'Semua Proyek' },
-  { value: 'enterprise-legacy', label: 'Enterprise Legacy (PHP 5.3)' },
-  { value: 'modern-spa', label: 'Modern Frameworks (Angular/Laravel)' },
-  { value: 'gis-public', label: 'GIS & Public Web' }
+  { value: "all", label: "Semua Proyek" },
+  { value: "internal-tools", label: "Internal Tools" },
+  { value: "ai-experimentation", label: "AI Experimentation" },
+  { value: "business-systems", label: "Business Systems" },
+  { value: "legacy-modernization", label: "Legacy Modernization" },
+  { value: "gis-public", label: "GIS & Public Web" }
 ];
 </script>
 

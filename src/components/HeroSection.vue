@@ -1,46 +1,58 @@
 <template>
   <header id="hero" class="hero-section section">
     <div class="container hero-wrapper animate-fade-in">
-      <!-- Left Column: Content -->
       <div class="hero-content">
         <div class="hero-badge glass">
           <span class="pulse-dot"></span>
-          Kontrak / Web Programmer at Universitas Indonesia
+          Web Programmer at Universitas Indonesia
         </div>
-        
+
         <h1 class="hero-title">
-          Building Resilient Systems,<br/>
-          From <span class="text-glow legacy">Legacy</span> to <span class="text-glow modern">Modern SPA</span>
+          Building <span class="text-glow modern">Internal Tools</span>,<br />
+          APIs, and Practical Solutions
         </h1>
-        
+
         <p class="hero-desc">
-          Halo! Saya <strong>Harits Achmad Fauzan</strong>, lulusan <strong>Ilmu Komputer Terapan IPB University (IPK 3.54)</strong>. Saat ini gw aktif bekerja sebagai <strong>Web Programmer Kontrak di Universitas Indonesia</strong>. Gw terbiasa menangani spektrum web yang luas: mulai dari memelihara sistem kepegawaian berskala besar <strong>(Symfony 1, PHP 5.3, PostgreSQL 8.3)</strong> hingga merancang portal modern <strong>(Angular, TypeScript, PHP 7.4 API)</strong>.
+          Halo! Saya <strong>Harits Achmad Fauzan</strong>, lulusan
+          <strong>D4 Teknologi Rekayasa Perangkat Lunak IPB University</strong>
+          dengan pengalaman mengembangkan sistem informasi internal, REST API,
+          dan workflow berbasis database. Saat ini saya bekerja sebagai
+          <strong>Web Programmer di Universitas Indonesia</strong> serta aktif
+          mengembangkan proyek menggunakan <strong>Go, Nuxt, Vue, PHP, dan PostgreSQL</strong>.
         </p>
 
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
-          <a href="/Harits_Achmad_Fauzan_Resume.pdf" download class="btn btn-secondary btn-cv-mobile">Download CV (PDF)</a>
+          <a
+            href="/Harits_Achmad_Fauzan_Resume.pdf"
+            download
+            class="btn btn-secondary btn-cv-mobile"
+          >
+            Download CV (PDF)
+          </a>
           <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
         </div>
       </div>
 
-      <!-- Right Column: Avatar/Photo -->
       <div class="hero-avatar-container">
         <div class="avatar-glow"></div>
         <div class="avatar-frame glass">
-          <img src="../assets/harits_photo.jpeg" alt="Foto Harits Achmad Fauzan" class="avatar-img" />
+          <img
+            src="../assets/harits_photo.jpeg"
+            alt="Foto Harits Achmad Fauzan"
+            class="avatar-img"
+          />
         </div>
       </div>
     </div>
 
-    <!-- Tech Strip Row -->
     <div class="container tech-strip-container">
       <div class="tech-strip glass animate-fade-in">
-        <div class="tech-item"><span class="dot legacy"></span> PHP 5.3 / 7.4</div>
-        <div class="tech-item"><span class="dot modern"></span> Angular / Vue.js</div>
-        <div class="tech-item"><span class="dot symfony"></span> Symfony 1 & Laravel</div>
+        <div class="tech-item"><span class="dot go"></span> Go / PHP</div>
+        <div class="tech-item"><span class="dot modern"></span> Nuxt / Vue</div>
+        <div class="tech-item"><span class="dot api"></span> REST API</div>
         <div class="tech-item"><span class="dot pg"></span> PostgreSQL / MySQL</div>
-        <div class="tech-item"><span class="dot gis"></span> Leaflet.js GIS</div>
+        <div class="tech-item"><span class="dot tools"></span> Git & AI-Assisted Development</div>
       </div>
     </div>
   </header>
@@ -92,7 +104,6 @@
   border-radius: 50%;
   background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
   filter: blur(40px);
-  z-index: 0;
   pointer-events: none;
 }
 
@@ -162,16 +173,6 @@
   color: var(--text-primary);
 }
 
-.text-glow {
-  position: relative;
-  font-weight: 800;
-}
-
-.text-glow.legacy {
-  color: var(--color-legacy);
-  text-shadow: 0 0 30px rgba(239, 68, 68, 0.2);
-}
-
 .text-glow.modern {
   color: var(--color-modern);
   text-shadow: 0 0 30px rgba(99, 102, 241, 0.25);
@@ -230,7 +231,7 @@
 }
 
 .btn-cv-mobile {
-  display: none; /* Desktop hides it, show on mobile */
+  display: none;
 }
 
 .tech-strip-container {
@@ -247,7 +248,7 @@
   padding: 1.1rem 2rem;
   border-radius: 16px;
   width: 100%;
-  max-width: 900px;
+  max-width: 980px;
 }
 
 .tech-item {
@@ -265,11 +266,11 @@
   border-radius: 50%;
 }
 
-.dot.legacy { background-color: var(--color-legacy); }
+.dot.go { background-color: #00add8; }
 .dot.modern { background-color: var(--color-modern); }
-.dot.symfony { background-color: #f7941e; }
+.dot.api { background-color: #f7941e; }
 .dot.pg { background-color: #336791; }
-.dot.gis { background-color: var(--color-public); }
+.dot.tools { background-color: var(--color-public); }
 
 @media (max-width: 968px) {
   .hero-wrapper {
@@ -278,39 +279,39 @@
     gap: 2.5rem;
     margin-bottom: 3rem;
   }
-  
+
   .hero-content {
     align-items: center;
     text-align: center;
   }
-  
+
   .hero-avatar-container {
     max-width: 260px;
   }
-  
+
   .avatar-frame {
     width: 240px;
     height: 240px;
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .hero-desc {
     font-size: 1rem;
   }
-  
+
   .hero-actions {
     flex-direction: column;
     width: 100%;
     max-width: 320px;
   }
-  
+
   .btn-cv-mobile {
     display: inline-flex;
   }
-  
+
   .tech-strip {
     padding: 1rem;
     gap: 1rem;
