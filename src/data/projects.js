@@ -1,74 +1,136 @@
 export const projects = [
   {
     id: 1,
-    title: "SIPEG UI (Anjab & Sicakep Modules)",
-    category: "enterprise-legacy",
-    categoryName: "Enterprise Legacy",
-    description: "Sistem Informasi Kepegawaian skala besar untuk Universitas Indonesia yang mengelola data administratif pegawai, dekanat, rektor, dan struktur organisasi kampus.",
-    role: "Modul Developer (Anjab & Sicakep)",
-    techStack: ["PHP 5.3", "Symfony 1", "PostgreSQL 8.3", "SQL Optimization", "Classic OOP"],
+    title: "Go POS Playground",
+    category: "internal-tools",
+    categoryName: "Internal Tools",
+    description: "Playground sistem point of sale untuk mengeksplorasi alur operasional toko, pengelolaan produk, stok, dan transaksi melalui backend API dan antarmuka web.",
+    role: "Full-stack Developer (Personal Project)",
+    techStack: ["Golang", "Gin", "Nuxt", "PostgreSQL", "REST API", "Git"],
     features: [
-      "Mengembangkan instrumen Analisis Jabatan (Anjab) terstruktur untuk pemetaan beban kerja.",
-      "Membangun modul Catatan Kepegawaian (Sicakep) untuk memantau rekam jejak kerja pegawai.",
-      "Melakukan optimasi kueri basis data pada tabel relasional kepegawaian berskala besar."
+      "Membangun fondasi backend API untuk data produk, stok, dan transaksi.",
+      "Menerjemahkan proses operasional sederhana menjadi alur kerja aplikasi yang mudah dipahami.",
+      "Mengembangkan proyek secara bertahap sambil melakukan pengujian dan penanganan edge case."
     ],
-    impact: "Memfasilitasi pengelolaan data administrasi ribuan dosen dan tenaga pendidik secara terpusat dan aman.",
-    phpVersion: "PHP 5.3",
-    colorClass: "glow-legacy",
-    badgeColor: "#EF4444" // Red for legacy
+    impact: "Menjadi ruang eksperimen untuk merancang internal tool operasional yang terstruktur dan mudah dikembangkan lebih lanjut.",
+    status: "Aktif dikembangkan",
+    primaryTech: "Go + Nuxt",
+    repositoryUrl: "https://github.com/haritsAchmad/go-pos-playground",
+    colorClass: "glow-modern",
+    badgeColor: "#6366F1"
   },
   {
     id: 2,
-    title: "SIG System (SMS516 & Koperasig)",
-    category: "modern-spa",
-    categoryName: "Modern Frameworks",
-    description: "Sistem kepegawaian korporasi modern dengan arsitektur decoupled (Angular frontend + PHP API backend) untuk layanan mandiri karyawan dan administrasi.",
-    role: "IT Programmer (Magang) - Fokus Modul SMS516 & Koperasig",
-    techStack: ["Angular (TS)", "PHP 7.4 (API)", "Laragon Setup", "RESTful API", "MySQL"],
+    title: "Go AI Playground",
+    category: "ai-experimentation",
+    categoryName: "AI Experimentation",
+    description: "Eksperimen aplikasi AI lokal untuk mempelajari integrasi model melalui Ollama, pengelolaan percakapan, serta pengembangan workflow berbantuan AI.",
+    role: "Full-stack Developer (Personal Project)",
+    techStack: ["Golang", "Nuxt", "Ollama", "Local LLM", "REST API", "Git"],
     features: [
-      "Merancang & mengembangkan Sistem Informasi Koperasi internal perusahaan (Koperasig).",
-      "Mengembangkan modul presensi mandiri (self-update-bio-attendance) pada modul SMS516.",
-      "Mengimplementasikan generator ekspor PDF kustom (buat-export-pdf) dan konfigurasi environment lokal via Laragon."
+      "Mengintegrasikan aplikasi dengan model AI lokal melalui Ollama.",
+      "Mengeksplorasi pengelolaan request, response, konteks percakapan, dan pengalaman pengguna.",
+      "Menggunakan AI-assisted development untuk debugging, eksplorasi solusi, dan dokumentasi teknis."
     ],
-    impact: "Memudahkan ribuan karyawan melakukan presensi mandiri, pelaporan koperasi, dan memotong birokrasi manual.",
-    phpVersion: "PHP 7.4",
-    colorClass: "glow-modern",
-    badgeColor: "#6366F1" // Indigo for modern
+    impact: "Memperdalam pemahaman mengenai integrasi AI ke aplikasi sekaligus menjaga eksperimen dapat dijalankan secara lokal.",
+    status: "Aktif dikembangkan · Repository privat",
+    primaryTech: "Go + Ollama",
+    colorClass: "glow-ai",
+    badgeColor: "#A855F7"
   },
   {
     id: 3,
-    title: "SI Inventaris SBRC IPB",
-    category: "modern-spa",
-    categoryName: "Modern Frameworks",
-    description: "Sistem Informasi Inventarisasi Alat & Bahan Penelitian Laboratorium untuk Pusat Penelitian Surfaktan dan Bioenergi (SBRC) IPB University.",
-    role: "Web Developer (Magang)",
-    techStack: ["PHP 8.2+", "Laravel", "Composer", "MySQL", "Artisan CLI"],
+    title: "Recruitment Management System",
+    category: "internal-tools",
+    categoryName: "Internal Tools",
+    description: "Sistem internal yang sedang dikembangkan untuk mendukung alur administrasi rekrutmen, penilaian, wawancara, dan pengambilan keputusan secara terpusat.",
+    role: "Full-stack Developer (Professional Project)",
+    techStack: ["Golang", "Gin", "Nuxt", "PostgreSQL", "REST API", "SQL"],
     features: [
-      "Membangun manajemen logistik inventaris riset kimia & surfaktan berbasis framework Laravel.",
-      "Mengadaptasi arsitektur sistem perpustakaan menjadi tracker aset alat lab yang dinamis.",
-      "Merancang pencatatan log peminjaman, ketersediaan stok fisik, dan dokumentasi perpus.sql."
+      "Menerjemahkan kebutuhan proses rekrutmen menjadi modul dan alur kerja berbasis peran.",
+      "Mengembangkan endpoint backend, pencarian, filter, dan pengelolaan status proses seleksi.",
+      "Menyusun antarmuka untuk membantu pengguna internal memantau dan mengelola tahapan rekrutmen."
     ],
-    impact: "Mendigitalkan pelacakan stok alat riset guna menghindari selisih fisik laboratorium dan mempercepat pencarian data aset.",
-    phpVersion: "PHP 8.2+",
+    impact: "Ditujukan untuk mengurangi proses manual dan membantu pemantauan tahapan rekrutmen secara lebih terstruktur.",
+    status: "Sedang dikerjakan · Source code tidak dipublikasikan",
+    primaryTech: "Go + Nuxt",
     colorClass: "glow-modern",
-    badgeColor: "#6366F1" // Indigo for frameworks
+    badgeColor: "#0EA5E9"
   },
   {
     id: 4,
+    title: "SIPEG UI (Anjab & Sicakep Modules)",
+    category: "legacy-modernization",
+    categoryName: "Legacy Modernization",
+    description: "Pengembangan dan pemeliharaan modul sistem informasi kepegawaian internal untuk mendukung analisis jabatan, pencatatan kinerja, dan pengelolaan struktur organisasi.",
+    role: "Module Developer",
+    techStack: ["PHP 5.3", "Symfony 1", "PostgreSQL 8.3", "SQL", "JavaScript"],
+    features: [
+      "Mengembangkan instrumen Analisis Jabatan untuk pemetaan jabatan dan beban kerja.",
+      "Membangun serta memelihara fitur monitoring, pelaporan, dan pengelolaan data kepegawaian.",
+      "Menyesuaikan fitur berdasarkan kebutuhan pengguna internal dan keterbatasan codebase legacy."
+    ],
+    impact: "Mendukung digitalisasi proses administrasi SDM melalui sistem internal yang lebih terpusat dan mudah ditelusuri.",
+    status: "Professional project · Repository privat",
+    primaryTech: "PHP 5.3",
+    colorClass: "glow-legacy",
+    badgeColor: "#EF4444"
+  },
+  {
+    id: 5,
+    title: "SIG System (SMS516 & Koperasig)",
+    category: "business-systems",
+    categoryName: "Business Systems",
+    description: "Pengembangan modul sistem internal perusahaan dengan arsitektur Angular frontend dan PHP API backend untuk layanan mandiri karyawan dan administrasi koperasi.",
+    role: "IT Programmer Intern",
+    techStack: ["Angular", "TypeScript", "PHP 7.4", "REST API", "MySQL"],
+    features: [
+      "Merancang dan mengembangkan Sistem Informasi Koperasi internal perusahaan.",
+      "Mengembangkan fitur pembaruan data dan presensi mandiri pada modul kepegawaian.",
+      "Mengimplementasikan generator ekspor PDF dan menyiapkan environment pengembangan lokal."
+    ],
+    impact: "Membantu digitalisasi layanan mandiri karyawan dan proses administrasi internal.",
+    status: "Completed · Professional project",
+    primaryTech: "Angular + PHP",
+    colorClass: "glow-modern",
+    badgeColor: "#6366F1"
+  },
+  {
+    id: 6,
+    title: "SI Inventaris SBRC IPB",
+    category: "business-systems",
+    categoryName: "Business Systems",
+    description: "Sistem informasi inventarisasi alat dan bahan penelitian laboratorium untuk membantu pencatatan stok, peminjaman, serta ketersediaan aset.",
+    role: "Web Developer Intern",
+    techStack: ["PHP 8.2+", "Laravel", "MySQL", "Composer", "Git"],
+    features: [
+      "Membangun pengelolaan data alat, bahan, stok, dan peminjaman.",
+      "Menyesuaikan alur aplikasi terhadap kebutuhan inventaris laboratorium.",
+      "Menyusun pencatatan riwayat dan ketersediaan aset agar lebih mudah ditelusuri."
+    ],
+    impact: "Mendigitalkan pencatatan inventaris laboratorium dan membantu pencarian data aset.",
+    status: "Completed · Professional project",
+    primaryTech: "Laravel",
+    colorClass: "glow-modern",
+    badgeColor: "#6366F1"
+  },
+  {
+    id: 7,
     title: "Fishee GIS Platform",
     category: "gis-public",
     categoryName: "GIS & Public Web",
-    description: "Aplikasi direktori dan pemetaan interaktif UMKM perikanan dan produk olahan ikan lokal berbasis peta digital geospasial.",
-    role: "Lead Developer (Solo Project)",
-    techStack: ["Native PHP 7.4", "Leaflet.js (GIS)", "Bootstrap", "jQuery", "MySQL"],
+    description: "Aplikasi direktori dan pemetaan interaktif UMKM perikanan serta produk olahan ikan lokal berbasis peta digital.",
+    role: "Lead Developer (Academic Project)",
+    techStack: ["Native PHP 7.4", "Leaflet.js", "Bootstrap", "jQuery", "MySQL"],
     features: [
-      "Mengintegrasikan peta geospasial Leaflet.js dengan marker dinamis koordinat toko UMKM.",
-      "Membangun sistem CRUD lengkap untuk produk olahan ikan dan manajemen profil partner.",
-      "Mengembangkan fitur pencarian taksonomi produk, ulasan, rating, serta filtering peta."
+      "Mengintegrasikan Leaflet.js dengan marker dinamis berdasarkan koordinat lokasi.",
+      "Membangun fitur CRUD produk dan pengelolaan profil mitra.",
+      "Mengembangkan pencarian, ulasan, rating, dan penyaringan data pada peta."
     ],
-    impact: "Menghubungkan nelayan dan UMKM lokal secara langsung dengan konsumen melalui peta sebaran interaktif.",
-    phpVersion: "PHP 7.4",
+    impact: "Menyajikan informasi UMKM dan produk lokal melalui pengalaman pencarian berbasis peta.",
+    status: "Completed · Academic project",
+    primaryTech: "PHP + Leaflet",
     colorClass: "glow-public",
-    badgeColor: "#10B981" // Emerald for GIS/public
+    badgeColor: "#10B981"
   }
 ];
