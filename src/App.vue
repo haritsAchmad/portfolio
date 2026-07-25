@@ -17,7 +17,7 @@ const handleFilterChange = (newFilter) => {
   activeFilter.value = newFilter;
 };
 
-const WEB3FORMS_ACCESS_KEY = "15a15d16-7459-4afe-84b1-c2a5c5856c00";
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
 const contactForm = ref({ name: "", email: "", message: "" });
 const formSubmitted = ref(false);
@@ -27,6 +27,10 @@ const submitForm = async () => {
   if (!contactForm.value.name || !contactForm.value.email) return;
 
   try {
+    if (!WEB3FORMS_ACCESS_KEY) {
+      throw new Error("VITE_WEB3FORMS_ACCESS_KEY belum dikonfigurasi");
+    }
+
     isSending.value = true;
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
