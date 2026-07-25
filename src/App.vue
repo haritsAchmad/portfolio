@@ -78,12 +78,7 @@ const submitForm = async () => {
           <div class="about-bio glass">
             <h3 class="about-card-title">Pendidikan & Profil</h3>
             <p class="bio-text">
-              Saya adalah lulusan
-              <strong>Teknologi Rekayasa Perangkat Lunak IPB University (IPK 3.54/4.00)</strong>
-              dengan pengalaman mengembangkan sistem internal, backend API,
-              database relasional, serta digitalisasi alur kerja operasional.
-              Saya terbiasa bekerja pada codebase legacy sekaligus mengembangkan
-              aplikasi baru menggunakan Go, Nuxt, Vue, PHP, dan PostgreSQL.
+              Saya adalah Web Developer dengan pengalaman profesional mengembangkan frontend dan backend sistem internal menggunakan Go, Gin, Nuxt, Vue, PHP, Symfony, PostgreSQL, dan REST API. Saya terbiasa memelihara codebase legacy, mengembangkan aplikasi baru, serta menerjemahkan kebutuhan dan alur bisnis menjadi fitur yang dapat digunakan oleh pengguna internal.
             </p>
 
             <div class="edu-badge glass">
@@ -158,7 +153,7 @@ const submitForm = async () => {
                   <h4 class="job-role">Web Programmer (Contract)</h4>
                   <h5 class="job-company">Universitas Indonesia</h5>
                   <ul class="job-details">
-                    <li>Mengembangkan dan memelihara modul Analisis Jabatan menggunakan PHP, Symfony 1, PostgreSQL, dan JavaScript.</li>
+                    <li>Mengembangkan dan memelihara frontend serta backend sistem internal menggunakan Go, Gin, Nuxt, Vue, PHP, Symfony 1, PostgreSQL, dan JavaScript.</li>
                     <li>Mengimplementasikan fitur monitoring, pelaporan, pengelolaan data, dan penyesuaian alur kerja berdasarkan kebutuhan pengguna internal.</li>
                     <li>Mengembangkan sistem baru menggunakan Go, Gin, Nuxt, Vue, PostgreSQL, dan REST API.</li>
                   </ul>
