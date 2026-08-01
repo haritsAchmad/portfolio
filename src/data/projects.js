@@ -4,15 +4,15 @@ export const projects = [
     title: "Go POS Playground",
     category: "internal-tools",
     categoryName: "Internal Tools",
-    description: "Playground sistem point of sale untuk mengeksplorasi alur operasional toko, pengelolaan produk, stok, dan transaksi melalui backend API dan antarmuka web.",
+    description: "Aplikasi point of sale dan operasional koperasi dengan REST API Go, PostgreSQL, dan frontend Nuxt untuk mengelola penjualan, pembelian, stok, piutang, dan master data.",
     role: "Full-stack Developer (Personal Project)",
-    techStack: ["Golang", "Gin", "Nuxt", "PostgreSQL", "REST API", "Git"],
+    techStack: ["Go", "net/http", "Nuxt", "PostgreSQL", "JWT", "Playwright"],
     features: [
-      "Membangun fondasi backend API untuk data produk, stok, dan transaksi.",
-      "Menerjemahkan proses operasional sederhana menjadi alur kerja aplikasi yang mudah dipahami.",
-      "Mengembangkan proyek secara bertahap sambil melakukan pengujian dan penanganan edge case."
+      "Mengimplementasikan transaksi penjualan dan pembelian dengan perubahan stok atomik, histori, pembatalan, serta pembayaran piutang.",
+      "Membangun autentikasi JWT, refresh-token rotation, pencabutan session, dan RBAC untuk admin, cashier, serta viewer.",
+      "Menambahkan import/export Excel, laporan PDF, audit log, soft delete, dan automated authorization regression tests."
     ],
-    impact: "Menjadi ruang eksperimen untuk merancang internal tool operasional yang terstruktur dan mudah dikembangkan lebih lanjut.",
+    impact: "Menjadi playground operasional end-to-end untuk mempraktikkan layered architecture, transaksi database, keamanan session, dan pengujian otorisasi.",
     status: "Aktif dikembangkan",
     primaryTech: "Go + Nuxt",
     repositoryUrl: "https://github.com/haritsAchmad/go-pos-playground",

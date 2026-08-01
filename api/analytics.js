@@ -11,10 +11,6 @@ const cleanText = (value, maxLength) =>
   typeof value === 'string' ? value.trim().slice(0, maxLength) : ''
 
 export async function POST(request) {
-  if (!process.env.DATABASE_URL) {
-    return Response.json({ error: 'Analytics database is not configured.' }, { status: 503 })
-  }
-
   try {
     const body = await request.json()
     const eventName = cleanText(body.event_name, 50)
@@ -28,6 +24,10 @@ export async function POST(request) {
 
     if (!allowedEvents.has(eventName) || !path) {
       return Response.json({ error: 'Invalid analytics event.' }, { status: 400 })
+    }
+
+    if (!process.env.DATABASE_URL) {
+      return Response.json({ error: 'Analytics database is not configured.' }, { status: 503 })
     }
 
     const sql = neon(process.env.DATABASE_URL)

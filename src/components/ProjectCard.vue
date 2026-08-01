@@ -154,6 +154,7 @@ defineProps({
   color: var(--text-primary);
   letter-spacing: -0.02em;
   margin-bottom: 0.25rem;
+  overflow-wrap: anywhere;
 }
 
 .project-role,

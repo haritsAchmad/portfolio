@@ -20,11 +20,43 @@ const handleFilterChange = (newFilter) => {
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
 const contactForm = ref({ name: "", email: "", message: "" });
+const botcheck = ref("");
 const formSubmitted = ref(false);
 const isSending = ref(false);
+const formError = ref("");
+
+const CONTACT_LIMITS = Object.freeze({ name: 100, email: 254, message: 2000 });
+const CONTACT_COOLDOWN_MS = 30_000;
+const LAST_CONTACT_SUBMISSION_KEY = "portfolio_last_contact_submission";
+const unsafeMarkupPattern = /<\/?[a-z][\s\S]*?>|javascript:/i;
 
 const submitForm = async () => {
-  if (!contactForm.value.name || !contactForm.value.email) return;
+  formError.value = "";
+  if (botcheck.value) return;
+
+  const { name, email, message } = contactForm.value;
+  if (!name || !email || !message) {
+    formError.value = "Semua field wajib diisi.";
+    return;
+  }
+  if (
+    name.length > CONTACT_LIMITS.name ||
+    email.length > CONTACT_LIMITS.email ||
+    message.length > CONTACT_LIMITS.message
+  ) {
+    formError.value = "Pesan melebihi batas panjang yang diizinkan.";
+    return;
+  }
+  if (unsafeMarkupPattern.test(`${name}\n${message}`)) {
+    formError.value = "HTML, script, dan URL JavaScript tidak diizinkan.";
+    return;
+  }
+
+  const lastSubmission = Number(localStorage.getItem(LAST_CONTACT_SUBMISSION_KEY) || 0);
+  if (Date.now() - lastSubmission < CONTACT_COOLDOWN_MS) {
+    formError.value = "Mohon tunggu 30 detik sebelum mengirim pesan berikutnya.";
+    return;
+  }
 
   try {
     if (!WEB3FORMS_ACCESS_KEY) {
@@ -49,13 +81,14 @@ const submitForm = async () => {
 
     if (!response.ok) throw new Error("Gagal mengirim pesan");
 
+    localStorage.setItem(LAST_CONTACT_SUBMISSION_KEY, String(Date.now()));
     formSubmitted.value = true;
     contactForm.value = { name: "", email: "", message: "" };
     setTimeout(() => {
       formSubmitted.value = false;
     }, 4000);
   } catch (error) {
-    alert("Oops! Terjadi gangguan saat mengirim pesan.");
+    formError.value = "Oops! Terjadi gangguan saat mengirim pesan.";
   } finally {
     isSending.value = false;
   }
@@ -273,18 +306,28 @@ const submitForm = async () => {
 
           <div class="contact-form-container glass">
             <form v-if="!formSubmitted" @submit.prevent="submitForm" class="contact-form">
+              <input
+                v-model="botcheck"
+                type="checkbox"
+                name="botcheck"
+                class="contact-honeypot"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+              />
               <div class="form-group">
                 <label for="name">Nama</label>
-                <input id="name" v-model="contactForm.name" required placeholder="Nama Anda" class="glass-input" />
+                <input id="name" v-model="contactForm.name" required maxlength="100" placeholder="Nama Anda" class="glass-input" />
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" v-model="contactForm.email" type="email" required placeholder="email@contoh.com" class="glass-input" />
+                <input id="email" v-model="contactForm.email" type="email" required maxlength="254" placeholder="email@contoh.com" class="glass-input" />
               </div>
               <div class="form-group">
                 <label for="message">Pesan</label>
-                <textarea id="message" v-model="contactForm.message" rows="4" placeholder="Tulis pesan Anda di sini..." class="glass-input"></textarea>
+                <textarea id="message" v-model="contactForm.message" rows="4" required maxlength="2000" placeholder="Tulis pesan Anda di sini..." class="glass-input"></textarea>
               </div>
+              <p v-if="formError" class="form-error" role="alert">{{ formError }}</p>
               <button type="submit" class="submit-btn" :disabled="isSending">
                 {{ isSending ? "Mengirim..." : "Kirim Pesan" }}
               </button>
@@ -461,6 +504,8 @@ const submitForm = async () => {
 .social-link:hover { color: var(--text-primary); background: rgba(255, 255, 255, 0.04); }
 
 .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.contact-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.form-error { color: #fca5a5; font-size: 0.85rem; line-height: 1.5; }
 .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
 .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); }
 .glass-input {
