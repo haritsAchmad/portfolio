@@ -293,7 +293,7 @@ const submitForm = async () => {
               </div>
               <div class="info-item">
                 <span class="info-icon">📍</span>
-                <span class="info-text">Bogor & Depok, Jawa Barat</span>
+                <span class="info-text">Bogor, Jawa Barat</span>
               </div>
             </div>
 
