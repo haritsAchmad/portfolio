@@ -4,7 +4,7 @@ export const projects = [
     title: "Go POS Playground",
     category: "internal-tools",
     categoryName: "Internal Tools",
-    description: "Aplikasi point of sale dan operasional koperasi dengan REST API Go, PostgreSQL, dan frontend Nuxt untuk mengelola penjualan, pembelian, stok, piutang, dan master data.",
+    description: "Sistem point of sale dan operasional koperasi end-to-end untuk mengelola penjualan, pembelian, stok, piutang, dan master data melalui satu workflow terintegrasi.",
     role: "Full-stack Developer (Personal Project)",
     techStack: ["Go", "net/http", "Nuxt", "PostgreSQL", "JWT", "Playwright"],
     features: [
@@ -24,7 +24,7 @@ export const projects = [
     title: "Go AI Playground",
     category: "ai-experimentation",
     categoryName: "AI Experimentation",
-    description: "Eksperimen aplikasi AI lokal untuk mempelajari integrasi model melalui Ollama, pengelolaan percakapan, serta pengembangan workflow berbantuan AI.",
+    description: "Aplikasi eksperimen AI lokal untuk mengeksplorasi integrasi model, pengelolaan konteks percakapan, dan workflow berbantuan AI melalui Ollama.",
     role: "Full-stack Developer (Personal Project)",
     techStack: ["Golang", "Nuxt", "Ollama", "Local LLM", "REST API", "Git"],
     features: [
@@ -43,7 +43,7 @@ export const projects = [
     title: "Recruitment Management System",
     category: "internal-tools",
     categoryName: "Internal Tools",
-    description: "Sistem internal yang sedang dikembangkan untuk mendukung alur administrasi rekrutmen, penilaian, wawancara, dan pengambilan keputusan secara terpusat.",
+    description: "Sistem rekrutmen internal yang memusatkan administrasi kandidat, penilaian, wawancara, dan pengambilan keputusan dalam alur kerja berbasis peran.",
     role: "Full-stack Developer (Professional Project)",
     techStack: ["Golang", "Gin", "Nuxt", "PostgreSQL", "REST API", "SQL"],
     features: [

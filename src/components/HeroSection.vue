@@ -4,33 +4,32 @@
       <div class="hero-content">
         <div class="hero-badge glass">
           <span class="pulse-dot"></span>
-          Web Programmer at Universitas Indonesia
+          Web Programmer · Backend & Web Development
         </div>
 
         <h1 class="hero-title">
-          Building <span class="text-glow modern">Internal Tools</span>,<br />
-          APIs, and Practical Solutions
+          Membangun <span class="text-glow modern">sistem internal</span><br />
+          yang jelas, aman, dan dapat diandalkan.
         </h1>
 
         <p class="hero-desc">
-          Halo! Saya <strong>Harits Achmad Fauzan</strong>, lulusan
-          <strong>D4 Teknologi Rekayasa Perangkat Lunak IPB University</strong>
-          dengan pengalaman mengembangkan sistem informasi internal, REST API,
-          dan workflow berbasis database. Saat ini saya bekerja sebagai
-          <strong>Web Programmer di Universitas Indonesia</strong> serta aktif
-          mengembangkan proyek menggunakan <strong>Go, Nuxt, Vue, PHP, dan PostgreSQL</strong>.
+          Saya <strong>Harits Achmad Fauzan</strong>, software developer dengan
+          pengalaman profesional membangun dan memelihara internal tools,
+          REST API, serta workflow berbasis database. Fokus utama saya adalah
+          backend dan web development menggunakan
+          <strong>Go, PHP, Nuxt, Vue, dan PostgreSQL</strong>.
         </p>
 
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
+          <a href="#projects" class="btn btn-primary">Lihat Project Pilihan</a>
           <a
             href="/Harits_Achmad_Fauzan_Resume.pdf"
             download
-            class="btn btn-secondary btn-cv-mobile"
+            class="btn btn-secondary"
           >
             Download CV (PDF)
           </a>
-          <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+          <a href="https://github.com/haritsAchmad" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
         </div>
       </div>
 
@@ -230,10 +229,6 @@
   transform: translateY(-2px);
 }
 
-.btn-cv-mobile {
-  display: none;
-}
-
 .tech-strip-container {
   width: 100%;
   display: flex;
@@ -306,10 +301,6 @@
     flex-direction: column;
     width: 100%;
     max-width: 320px;
-  }
-
-  .btn-cv-mobile {
-    display: inline-flex;
   }
 
   .tech-strip {
