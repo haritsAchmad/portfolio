@@ -33,7 +33,7 @@ defineProps({
         </span>
       </div>
       <h3 class="project-title">{{ project.title }}</h3>
-      <p class="project-role">Peran: <strong>{{ project.role }}</strong></p>
+      <p class="project-role"><strong>{{ project.role }}</strong></p>
       <p v-if="project.status" class="project-status">{{ project.status }}</p>
     </div>
 
@@ -41,7 +41,7 @@ defineProps({
       <p class="project-desc">{{ project.description }}</p>
 
       <div class="features-section">
-        <h4 class="section-heading">Fitur & Kontribusi Utama:</h4>
+        <h4 class="section-heading">Kontribusi utama</h4>
         <ul class="features-list">
           <li
             v-for="(feature, idx) in project.features"
@@ -58,7 +58,7 @@ defineProps({
         class="impact-section"
         :style="{ borderLeft: `2px solid ${project.badgeColor}80` }"
       >
-        <p class="impact-text"><strong>Dampak:</strong> {{ project.impact }}</p>
+        <p class="impact-text"><strong>Hasil:</strong> {{ project.impact }}</p>
       </div>
     </div>
 

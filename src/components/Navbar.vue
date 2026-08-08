@@ -7,8 +7,8 @@
       </div>
       <div class="nav-links">
         <a href="#hero" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About</a>
         <a href="#projects" class="nav-link">Projects</a>
+        <a href="#about" class="nav-link">Experience</a>
         <a href="#contact" class="nav-link">Contact</a>
         <a href="/Harits_Achmad_Fauzan_Resume.pdf" download class="btn-cv glass">Download CV</a>
       </div>
