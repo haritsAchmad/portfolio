@@ -1,35 +1,39 @@
+<script setup>
+import { useI18n } from "../i18n";
+
+const { locale, t } = useI18n();
+</script>
+
 <template>
   <header id="hero" class="hero-section section">
     <div class="container hero-wrapper animate-fade-in">
       <div class="hero-content">
         <div class="hero-badge glass">
           <span class="pulse-dot"></span>
-          Web Programmer · Backend & Web Development
+          {{ t("hero.badge") }}
         </div>
 
         <h1 class="hero-title">
-          Membangun <span class="text-glow modern">sistem internal</span><br />
-          yang jelas, aman, dan dapat diandalkan.
+          {{ t("hero.titleBefore") }} <span class="text-glow modern">{{ t("hero.titleAccent") }}</span><br />
+          {{ t("hero.titleAfter") }}
         </h1>
 
         <p class="hero-desc">
-          Saya <strong>Harits Achmad Fauzan</strong>, software developer dengan
-          pengalaman profesional membangun dan memelihara internal tools,
-          REST API, serta workflow berbasis database. Fokus utama saya adalah
-          backend dan web development menggunakan
-          <strong>Go, PHP, Nuxt, Vue, dan PostgreSQL</strong>.
+          {{ t("hero.introBefore") }} <strong>Harits Achmad Fauzan</strong>,
+          {{ t("hero.introAfter") }}
+          <strong>{{ locale === "en" ? "Go, PHP, Nuxt, Vue, and PostgreSQL" : "Go, PHP, Nuxt, Vue, dan PostgreSQL" }}</strong>.
         </p>
 
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">Lihat Project Pilihan</a>
+          <a href="#projects" class="btn btn-primary">{{ t("hero.projects") }}</a>
           <a
             href="/Harits_Achmad_Fauzan_Resume.pdf"
             download
             class="btn btn-secondary"
           >
-            Download CV (PDF)
+            {{ t("hero.cv") }}
           </a>
-          <a href="https://github.com/haritsAchmad" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+          <a href="https://github.com/haritsAchmad" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">{{ t("hero.github") }}</a>
         </div>
       </div>
 

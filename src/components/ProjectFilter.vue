@@ -1,4 +1,7 @@
 <script setup>
+import { computed } from "vue";
+import { useI18n } from "../i18n";
+
 defineProps({
   activeFilter: {
     type: String,
@@ -8,14 +11,15 @@ defineProps({
 
 defineEmits(["change-filter"]);
 
-const filters = [
-  { value: "all", label: "Semua Proyek" },
-  { value: "internal-tools", label: "Internal Tools" },
-  { value: "ai-experimentation", label: "AI Experimentation" },
-  { value: "business-systems", label: "Business Systems" },
-  { value: "legacy-modernization", label: "Legacy Modernization" },
-  { value: "gis-public", label: "GIS & Public Web" }
-];
+const { t } = useI18n();
+const filters = computed(() => [
+  { value: "all", label: t("projects.filters.all") },
+  { value: "internal-tools", label: t("projects.filters.internal") },
+  { value: "ai-experimentation", label: t("projects.filters.ai") },
+  { value: "business-systems", label: t("projects.filters.business") },
+  { value: "legacy-modernization", label: t("projects.filters.legacy") },
+  { value: "gis-public", label: t("projects.filters.gis") }
+]);
 </script>
 
 <template>

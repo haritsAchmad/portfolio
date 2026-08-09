@@ -1,3 +1,9 @@
+<script setup>
+import { useI18n } from "../i18n";
+
+const { locale, setLocale, t } = useI18n();
+</script>
+
 <template>
   <nav class="navbar glass">
     <div class="container nav-container">
@@ -6,11 +12,15 @@
         <span class="brand-text">Harits.Dev</span>
       </div>
       <div class="nav-links">
-        <a href="#hero" class="nav-link">Home</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#about" class="nav-link">Experience</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <a href="/Harits_Achmad_Fauzan_Resume.pdf" download class="btn-cv glass">Download CV</a>
+        <a href="#hero" class="nav-link">{{ t("nav.home") }}</a>
+        <a href="#projects" class="nav-link">{{ t("nav.projects") }}</a>
+        <a href="#about" class="nav-link">{{ t("nav.experience") }}</a>
+        <a href="#contact" class="nav-link">{{ t("nav.contact") }}</a>
+        <div class="language-switch" role="group" aria-label="Language">
+          <button :class="{ active: locale === 'en' }" :aria-pressed="locale === 'en'" @click="setLocale('en')">EN</button>
+          <button :class="{ active: locale === 'id' }" :aria-pressed="locale === 'id'" @click="setLocale('id')">ID</button>
+        </div>
+        <a href="/Harits_Achmad_Fauzan_Resume.pdf" download class="btn-cv glass">{{ t("nav.cv") }}</a>
       </div>
     </div>
   </nav>
@@ -89,12 +99,40 @@
   transform: translateY(-1px);
 }
 
+.language-switch {
+  display: flex;
+  padding: 0.2rem;
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.language-switch button {
+  border: 0;
+  border-radius: 5px;
+  padding: 0.3rem 0.5rem;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.language-switch button.active {
+  color: #fff;
+  background: var(--color-modern);
+}
+
 @media (max-width: 768px) {
   .nav-links {
     gap: 1rem;
   }
   .btn-cv {
     display: none; /* Hide on mobile navbar, hero will show it */
+  }
+  .nav-link {
+    display: none;
   }
 }
 </style>
