@@ -1,4 +1,8 @@
 <script setup>
+import { useI18n } from "../i18n";
+
+const { t } = useI18n();
+
 defineProps({
   project: {
     type: Object,
@@ -41,7 +45,7 @@ defineProps({
       <p class="project-desc">{{ project.description }}</p>
 
       <div class="features-section">
-        <h4 class="section-heading">Kontribusi utama</h4>
+        <h4 class="section-heading">{{ t("projects.contribution") }}</h4>
         <ul class="features-list">
           <li
             v-for="(feature, idx) in project.features"
@@ -58,7 +62,7 @@ defineProps({
         class="impact-section"
         :style="{ borderLeft: `2px solid ${project.badgeColor}80` }"
       >
-        <p class="impact-text"><strong>Hasil:</strong> {{ project.impact }}</p>
+        <p class="impact-text"><strong>{{ t("projects.result") }}</strong> {{ project.impact }}</p>
       </div>
     </div>
 
@@ -76,7 +80,7 @@ defineProps({
         target="_blank"
         rel="noopener noreferrer"
       >
-        Lihat repository
+        {{ t("projects.repository") }}
         <span aria-hidden="true">↗</span>
       </a>
     </div>

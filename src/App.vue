@@ -5,12 +5,18 @@ import Navbar from "./components/Navbar.vue";
 import HeroSection from "./components/HeroSection.vue";
 import ProjectFilter from "./components/ProjectFilter.vue";
 import ProjectCard from "./components/ProjectCard.vue";
+import { useI18n } from "./i18n";
+
+const { locale, t } = useI18n();
 
 const activeFilter = ref("all");
 
 const filteredProjects = computed(() => {
-  if (activeFilter.value === "all") return projects;
-  return projects.filter((project) => project.category === activeFilter.value);
+  const localizedProjects = projects.map((project) =>
+    locale.value === "en" && project.en ? { ...project, ...project.en } : project
+  );
+  if (activeFilter.value === "all") return localizedProjects;
+  return localizedProjects.filter((project) => project.category === activeFilter.value);
 });
 
 const handleFilterChange = (newFilter) => {
@@ -105,17 +111,16 @@ const submitForm = async () => {
 
     <section id="about" class="section about-section">
       <div class="container animate-fade-in">
-        <h2 class="section-title">Profil & Pengalaman</h2>
+        <h2 class="section-title">{{ t("about.title") }}</h2>
         <p class="section-subtitle">
-          Ringkasan pendidikan, keahlian teknis, dan pengalaman profesional dalam
-          pengembangan sistem internal, API, dan aplikasi web.
+          {{ t("about.subtitle") }}
         </p>
 
         <div class="about-grid">
           <div class="about-bio glass">
-            <h3 class="about-card-title">Pendidikan & Profil</h3>
+            <h3 class="about-card-title">{{ t("about.profile") }}</h3>
             <p class="bio-text">
-              Saya adalah Web Developer dengan pengalaman profesional mengembangkan frontend dan backend sistem internal menggunakan Go, Gin, Nuxt, Vue, PHP, Symfony, PostgreSQL, dan REST API. Saya terbiasa memelihara codebase legacy, mengembangkan aplikasi baru, serta menerjemahkan kebutuhan dan alur bisnis menjadi fitur yang dapat digunakan oleh pengguna internal.
+              {{ t("about.bio") }}
             </p>
 
             <div class="edu-badge glass">
@@ -123,11 +128,11 @@ const submitForm = async () => {
               <div class="edu-info">
                 <span class="edu-uni">IPB University</span>
                 <span class="edu-degree">Bachelor of Applied Computer Science</span>
-                <span class="edu-date">Agustus 2021 - Oktober 2025 (IPK 3.54)</span>
+              <span class="edu-date">{{ locale === "en" ? "August 2021 - October 2025 (GPA 3.54)" : "Agustus 2021 - Oktober 2025 (IPK 3.54)" }}</span>
               </div>
             </div>
 
-            <h4 class="skills-title">Keahlian Teknis Utama:</h4>
+            <h4 class="skills-title">{{ t("about.skills") }}</h4>
             <div class="skills-categories">
               <div class="skill-group">
                 <span class="skill-group-name">Backend</span>
@@ -181,18 +186,23 @@ const submitForm = async () => {
           </div>
 
           <div class="about-experience glass">
-            <h3 class="about-card-title">Pengalaman Kerja</h3>
+            <h3 class="about-card-title">{{ t("about.experience") }}</h3>
             <div class="timeline">
               <div class="timeline-item">
                 <div class="timeline-marker ui-marker"></div>
                 <div class="timeline-content">
-                  <span class="job-date">Maret 2026 - Sekarang</span>
+                  <span class="job-date">{{ locale === "en" ? "March 2026 - Present" : "Maret 2026 - Sekarang" }}</span>
                   <h4 class="job-role">Web Programmer (Contract)</h4>
                   <h5 class="job-company">Universitas Indonesia</h5>
-                  <ul class="job-details">
+                  <ul v-if="locale === 'id'" class="job-details">
                     <li>Mengembangkan dan memelihara frontend serta backend sistem internal menggunakan Go, Gin, Nuxt, Vue, PHP, Symfony 1, PostgreSQL, dan JavaScript.</li>
                     <li>Mengimplementasikan fitur monitoring, pelaporan, pengelolaan data, dan penyesuaian alur kerja berdasarkan kebutuhan pengguna internal.</li>
                     <li>Mengembangkan sistem baru menggunakan Go, Gin, Nuxt, Vue, PostgreSQL, dan REST API.</li>
+                  </ul>
+                  <ul v-else class="job-details">
+                    <li>Develop and maintain frontend and backend components for internal systems using Go, Gin, Nuxt, Vue, PHP, Symfony 1, PostgreSQL, and JavaScript.</li>
+                    <li>Implement monitoring, reporting, data-management, and workflow features based on internal-user requirements.</li>
+                    <li>Develop new systems using Go, Gin, Nuxt, Vue, PostgreSQL, and REST APIs.</li>
                   </ul>
                 </div>
               </div>
@@ -200,12 +210,16 @@ const submitForm = async () => {
               <div class="timeline-item">
                 <div class="timeline-marker ui-marker"></div>
                 <div class="timeline-content">
-                  <span class="job-date">September 2025 - Februari 2026</span>
+                  <span class="job-date">{{ locale === "en" ? "September 2025 - February 2026" : "September 2025 - Februari 2026" }}</span>
                   <h4 class="job-role">Web Programmer Intern</h4>
                   <h5 class="job-company">Universitas Indonesia</h5>
-                  <ul class="job-details">
+                  <ul v-if="locale === 'id'" class="job-details">
                     <li>Mengembangkan modul awal instrumen kuesioner beban kerja berbasis Symfony 1 dan PostgreSQL 8.3.</li>
                     <li>Membantu pemeliharaan modul database kepegawaian dan penyesuaian fitur berdasarkan proses bisnis internal.</li>
+                  </ul>
+                  <ul v-else class="job-details">
+                    <li>Developed the initial workload questionnaire module using Symfony 1 and PostgreSQL 8.3.</li>
+                    <li>Maintained employee-database modules and adapted features to internal business processes.</li>
                   </ul>
                 </div>
               </div>
@@ -213,13 +227,18 @@ const submitForm = async () => {
               <div class="timeline-item">
                 <div class="timeline-marker sig-marker"></div>
                 <div class="timeline-content">
-                  <span class="job-date">Juni 2024 - Februari 2025</span>
+                  <span class="job-date">{{ locale === "en" ? "June 2024 - February 2025" : "Juni 2024 - Februari 2025" }}</span>
                   <h4 class="job-role">IT Programmer Intern</h4>
                   <h5 class="job-company">PT Saraswanti Indo Genetech</h5>
-                  <ul class="job-details">
+                  <ul v-if="locale === 'id'" class="job-details">
                     <li>Mengembangkan generator PDF dinamis serta fitur pembaruan data dan sinkronisasi presensi mandiri.</li>
                     <li>Merancang dan mengembangkan Sistem Informasi Manajemen Koperasi menggunakan Angular, TypeScript, PHP/Lumen, REST API, dan MySQL.</li>
                     <li>Menyiapkan environment pengembangan lokal agar kompatibel dengan PHP 7.4.</li>
+                  </ul>
+                  <ul v-else class="job-details">
+                    <li>Developed dynamic PDF generation, employee-data updates, and attendance synchronization features.</li>
+                    <li>Designed and developed a cooperative management system using Angular, TypeScript, PHP/Lumen, REST APIs, and MySQL.</li>
+                    <li>Prepared a local development environment compatible with PHP 7.4.</li>
                   </ul>
                 </div>
               </div>
@@ -227,12 +246,16 @@ const submitForm = async () => {
               <div class="timeline-item">
                 <div class="timeline-marker sbrc-marker"></div>
                 <div class="timeline-content">
-                  <span class="job-date">Februari 2024 - Juni 2024</span>
+                  <span class="job-date">{{ locale === "en" ? "February 2024 - June 2024" : "Februari 2024 - Juni 2024" }}</span>
                   <h4 class="job-role">Web Developer Intern</h4>
                   <h5 class="job-company">SBRC IPB University</h5>
-                  <ul class="job-details">
+                  <ul v-if="locale === 'id'" class="job-details">
                     <li>Membangun sistem inventaris alat dan bahan laboratorium menggunakan Laravel, PHP 8.2+, dan MySQL.</li>
                     <li>Mendigitalkan pencatatan stok, peminjaman, riwayat, dan ketersediaan aset.</li>
+                  </ul>
+                  <ul v-else class="job-details">
+                    <li>Built a laboratory equipment and materials inventory system using Laravel, PHP 8.2+, and MySQL.</li>
+                    <li>Digitalized stock, borrowing, history, and asset-availability records.</li>
                   </ul>
                 </div>
               </div>
@@ -244,10 +267,9 @@ const submitForm = async () => {
 
     <section id="projects" class="section">
       <div class="container animate-fade-in">
-        <h2 class="section-title">Portofolio Kerja</h2>
+        <h2 class="section-title">{{ t("projects.title") }}</h2>
         <p class="section-subtitle">
-          Pilihan internal tools, backend API, sistem bisnis, eksperimen AI, dan
-          aplikasi web yang pernah atau sedang saya kembangkan.
+          {{ t("projects.subtitle") }}
         </p>
 
         <ProjectFilter
@@ -269,17 +291,16 @@ const submitForm = async () => {
 
     <section id="contact" class="section contact-section">
       <div class="container animate-fade-in">
-        <h2 class="section-title">Kontak & Kolaborasi</h2>
+        <h2 class="section-title">{{ t("contact.title") }}</h2>
         <p class="section-subtitle">
-          Terbuka untuk diskusi mengenai pengembangan sistem internal, backend API,
-          database, dan digitalisasi proses kerja.
+          {{ t("contact.subtitle") }}
         </p>
 
         <div class="contact-grid">
           <div class="contact-info glass">
-            <h3 class="info-title">Let's Connect</h3>
+            <h3 class="info-title">{{ t("contact.heading") }}</h3>
             <p class="info-desc">
-              Hubungi saya melalui email, telepon, atau akun profesional berikut.
+              {{ t("contact.description") }}
             </p>
 
             <div class="info-details">
@@ -293,7 +314,7 @@ const submitForm = async () => {
               </div>
               <div class="info-item">
                 <span class="info-icon">📍</span>
-                <span class="info-text">Bogor, Jawa Barat</span>
+                <span class="info-text">{{ locale === "en" ? "Bogor, West Java" : "Bogor, Jawa Barat" }}</span>
               </div>
             </div>
 
@@ -316,27 +337,27 @@ const submitForm = async () => {
                 aria-hidden="true"
               />
               <div class="form-group">
-                <label for="name">Nama</label>
-                <input id="name" v-model="contactForm.name" required maxlength="100" placeholder="Nama Anda" class="glass-input" />
+                <label for="name">{{ t("contact.formName") }}</label>
+                <input id="name" v-model="contactForm.name" required maxlength="100" :placeholder="t('contact.namePlaceholder')" class="glass-input" />
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">{{ t("contact.formEmail") }}</label>
                 <input id="email" v-model="contactForm.email" type="email" required maxlength="254" placeholder="email@contoh.com" class="glass-input" />
               </div>
               <div class="form-group">
-                <label for="message">Pesan</label>
-                <textarea id="message" v-model="contactForm.message" rows="4" required maxlength="2000" placeholder="Tulis pesan Anda di sini..." class="glass-input"></textarea>
+                <label for="message">{{ t("contact.formMessage") }}</label>
+                <textarea id="message" v-model="contactForm.message" rows="4" required maxlength="2000" :placeholder="t('contact.messagePlaceholder')" class="glass-input"></textarea>
               </div>
               <p v-if="formError" class="form-error" role="alert">{{ formError }}</p>
               <button type="submit" class="submit-btn" :disabled="isSending">
-                {{ isSending ? "Mengirim..." : "Kirim Pesan" }}
+                {{ isSending ? t("contact.sending") : t("contact.send") }}
               </button>
             </form>
 
             <div v-else class="success-message">
               <span class="success-icon">✓</span>
-              <h3 class="success-title">Pesan Terkirim!</h3>
-              <p class="success-desc">Terima kasih. Saya akan membalas email Anda secepatnya.</p>
+              <h3 class="success-title">{{ t("contact.success") }}</h3>
+              <p class="success-desc">{{ t("contact.successDescription") }}</p>
             </div>
           </div>
         </div>
@@ -487,10 +508,30 @@ const submitForm = async () => {
 .info-title { font-size: 1.5rem; margin-bottom: 1rem; }
 .info-desc { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 2rem; }
 .info-details { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem; }
-.info-item { display: flex; align-items: center; gap: 0.75rem; }
-.info-icon { font-size: 1.15rem; }
+.info-item {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 0.75rem;
+  min-height: 28px;
+}
+.info-icon {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  line-height: 1;
+}
 .info-text,
-.contact-link { font-size: 0.95rem; color: var(--text-secondary); text-decoration: none; }
+.contact-link {
+  min-width: 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
 .contact-link:hover { color: var(--color-modern); }
 .social-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .social-link {
