@@ -117,6 +117,12 @@ const { locale, setLocale, t } = useI18n();
   font-size: 0.72rem;
   font-weight: 700;
   cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.language-switch button:hover {
+  color: var(--text-primary);
+  transform: translateY(-1px);
 }
 
 .language-switch button.active {

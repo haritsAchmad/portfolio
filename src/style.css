@@ -36,6 +36,48 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Smoothly crossfade localized copy without shifting the current scroll position. */
+::view-transition-old(root) {
+  animation: language-out 160ms ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: language-in 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.language-changing #app {
+  animation: language-fallback 360ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes language-out {
+  to {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes language-in {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(5px);
+  }
+}
+
+@keyframes language-fallback {
+  0%, 100% { opacity: 1; filter: blur(0); }
+  40% { opacity: 0.45; filter: blur(2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  .language-changing #app {
+    animation: none;
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

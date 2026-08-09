@@ -82,8 +82,25 @@ const messages = {
 export const useI18n = () => {
   const t = (path) => path.split(".").reduce((value, key) => value?.[key], messages[locale.value]) ?? path;
   const setLocale = (value) => {
-    locale.value = value === "id" ? "id" : "en";
-    document.documentElement.lang = locale.value;
+    const nextLocale = value === "id" ? "id" : "en";
+    if (nextLocale === locale.value) return;
+
+    const updateLocale = () => {
+      locale.value = nextLocale;
+      document.documentElement.lang = nextLocale;
+    };
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion && document.startViewTransition) {
+      document.startViewTransition(updateLocale);
+      return;
+    }
+
+    if (!reduceMotion) {
+      document.documentElement.classList.add("language-changing");
+      window.setTimeout(() => document.documentElement.classList.remove("language-changing"), 380);
+    }
+    updateLocale();
   };
 
   return { locale: computed(() => locale.value), setLocale, t };
