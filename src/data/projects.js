@@ -1,3 +1,16 @@
+const projectPriority = [
+  "Local Agent Playground",
+  "DevKit Playground",
+  "Go POS Playground",
+  "Go AI Playground",
+  "COSMO",
+  "ORBIT",
+  "SICAKEP",
+  "Employee Self-Service & Cooperative Management Tools",
+  "SI Inventaris SBRC IPB",
+  "Fishee GIS Platform"
+];
+
 export const projects = [
   {
     id: 1,
@@ -57,13 +70,13 @@ export const projects = [
     title: "COSMO",
     category: "internal-tools",
     categoryName: "Internal Tools",
-    description: "Sistem Informasi Career Opportunity System and Modern Core untuk memusatkan administrasi kandidat, wawancara, penilaian, dan keputusan rekrutmen berbasis peran.",
-    role: "Full-stack Developer (Professional Project)",
+    description: "Sistem Informasi Career Opportunity System and Modern Core untuk administrasi kandidat, wawancara, penilaian, dan keputusan rekrutmen berbasis peran.",
+    role: "Development Team Member (Professional Project)",
     techStack: ["Golang", "Gin", "Nuxt", "PostgreSQL", "REST API", "SQL"],
     features: [
-      "Menerjemahkan kebutuhan proses rekrutmen menjadi modul dan alur kerja berbasis peran.",
-      "Mengembangkan endpoint backend, pencarian, filter, dan pengelolaan status proses seleksi.",
-      "Menyusun antarmuka untuk membantu pengguna internal memantau dan mengelola tahapan rekrutmen."
+      "Berkontribusi pada pengembangan awal COSMO sebagai bagian dari tim.",
+      "Membantu mengembangkan endpoint backend, pencarian, filter, dan pengelolaan status proses seleksi.",
+      "Berkontribusi pada antarmuka rekrutmen dan penilaian wawancara bersama tim pengembangan."
     ],
     impact: "Ditujukan untuk mengurangi proses manual dan membantu pemantauan tahapan rekrutmen secara lebih terstruktur.",
     status: "Sedang dikerjakan · Source code tidak dipublikasikan",
@@ -72,40 +85,66 @@ export const projects = [
     badgeColor: "#0EA5E9"
     ,en: {
       description: "Career Opportunity System and Modern Core, an internal system that centralizes candidate administration, interviews, assessments, and hiring decisions in a role-based workflow.",
-      role: "Full-stack Developer · Professional Project",
-      features: ["Translated recruitment requirements into role-based modules and application workflows.", "Developed backend endpoints, search, filtering, and selection-status management.", "Built interfaces that help internal users monitor and manage recruitment stages."],
+      role: "Development Team Member · Professional Project",
+      features: ["Contributed to the initial development of COSMO as part of the team.", "Helped develop backend endpoints, search, filtering, and selection-status management.", "Contributed to recruitment and interview-assessment interfaces with the development team."],
       impact: "Designed to reduce manual administration and make recruitment stages easier to monitor consistently.",
       status: "In development · Source code confidential"
     }
   },
   {
     id: 4,
-    title: "SICAKEP & ORBIT",
+    title: "SICAKEP",
     category: "legacy-modernization",
     categoryName: "Legacy Modernization",
-    description: "Pengembangan dua sistem informasi SDM: SICAKEP untuk capaian kinerja pegawai dan ORBIT untuk organisasi, jabatan, proses bisnis, serta talent analytic.",
-    role: "Module Developer",
-    techStack: ["PHP 5.3", "Symfony 1", "PostgreSQL 8.3", "SQL", "JavaScript"],
+    description: "Sistem Informasi Capaian Kinerja Pegawai untuk mendukung pengelolaan capaian kinerja dan digitalisasi workflow SDM.",
+    role: "Development Team Member (Professional Project)",
+    techStack: ["PHP", "Symfony", "PostgreSQL", "JavaScript"],
     features: [
-      "Berkontribusi pada Iterasi 1 dan 2 SICAKEP untuk pengelolaan capaian kinerja pegawai.",
-      "Mengembangkan Iterasi 1 dan 2 ORBIT, mencakup analisis jabatan dan beban kerja, monitoring, pelaporan, serta workflow organisasi.",
-      "Memelihara aplikasi legacy dan menangani isu produksi terkait business rules, session, serta data."
+      "Berkontribusi pada Iterasi 1 dan 2 sebagai bagian dari tim pengembangan.",
+      "Mendukung pengelolaan capaian kinerja pegawai dan digitalisasi workflow yang sebelumnya dilakukan secara manual.",
+      "Melakukan testing, debugging, dan penyempurnaan fitur secara iteratif berdasarkan kebutuhan serta umpan balik internal."
     ],
-    impact: "Mendukung digitalisasi proses administrasi SDM melalui sistem internal yang lebih terpusat dan mudah ditelusuri.",
-    status: "Professional project · Repository privat",
-    primaryTech: "PHP 5.3",
+    impact: "Mendukung proses pengelolaan capaian kinerja pegawai melalui workflow sistem yang lebih terstruktur.",
+    status: "Professional project · Source code tidak dipublikasikan",
+    primaryTech: "PHP + Symfony",
     colorClass: "glow-legacy",
     badgeColor: "#EF4444"
     ,en: {
-      description: "Development of two HR information systems: SICAKEP for employee-performance achievements and ORBIT for organization, roles, business processes, and talent analytics.",
-      role: "Module Developer · Professional Project",
-      features: ["Contributed to SICAKEP Iterations 1 and 2 for employee-performance achievement management.", "Developed ORBIT Iterations 1 and 2, covering job and workload analysis, monitoring, reporting, and organizational workflows.", "Maintained the legacy application and resolved production issues involving business rules, sessions, and data."],
-      impact: "Supports the digitalization of HR administration through centralized and traceable internal workflows.",
+      description: "Sistem Informasi Capaian Kinerja Pegawai, an HR information system supporting employee-performance achievement management and workflow digitalization.",
+      role: "Development Team Member · Professional Project",
+      features: ["Contributed to Iterations 1 and 2 as part of the development team.", "Supported employee-performance achievement management and the digitalization of previously manual workflows.", "Performed testing, debugging, and iterative feature improvements based on internal requirements and feedback."],
+      impact: "Supports employee-performance achievement management through a more structured system workflow.",
       status: "Professional project · Source code confidential"
     }
   },
   {
     id: 5,
+    title: "ORBIT",
+    category: "legacy-modernization",
+    categoryName: "Legacy Modernization",
+    description: "Sistem Informasi Organization, Role, Business Process and Talent Analytic untuk analisis jabatan, beban kerja, data pegawai, dan workflow organisasi.",
+    role: "Developer (Professional Project)",
+    techStack: ["PHP 5.3", "Symfony 1", "PostgreSQL 8.3", "JavaScript"],
+    features: [
+      "Menangani development Iterasi 1 dan 2, sementara kebutuhan, desain, dan pengujian melibatkan kolaborasi internal.",
+      "Mengembangkan analisis jabatan dan beban kerja, pengelolaan data pegawai, monitoring, pelaporan, serta workflow organisasi.",
+      "Memelihara aplikasi legacy dan menyelesaikan isu produksi terkait business rules, session, serta anomali data."
+    ],
+    impact: "Mendukung digitalisasi proses organisasi dan SDM sekaligus meningkatkan keterlacakan data serta workflow internal.",
+    status: "Professional project · Source code tidak dipublikasikan",
+    primaryTech: "PHP 5.3",
+    colorClass: "glow-legacy",
+    badgeColor: "#F97316",
+    en: {
+      description: "Sistem Informasi Organization, Role, Business Process and Talent Analytic for job analysis, workload analysis, employee data, and organizational workflows.",
+      role: "Developer · Professional Project",
+      features: ["Handled development for Iterations 1 and 2, while requirements, design, and testing involved internal collaboration.", "Developed job and workload analysis, employee-data management, monitoring, reporting, and organizational workflows.", "Maintained the legacy application and resolved production issues involving business rules, sessions, and anomalous data."],
+      impact: "Supports the digitalization of organizational and HR processes while improving internal data and workflow traceability.",
+      status: "Professional project · Source code confidential"
+    }
+  },
+  {
+    id: 6,
     title: "Employee Self-Service & Cooperative Management Tools",
     category: "business-systems",
     categoryName: "Business Systems",
@@ -131,7 +170,7 @@ export const projects = [
     }
   },
   {
-    id: 6,
+    id: 7,
     title: "SI Inventaris SBRC IPB",
     category: "business-systems",
     categoryName: "Business Systems",
@@ -157,7 +196,7 @@ export const projects = [
     }
   },
   {
-    id: 7,
+    id: 8,
     title: "DevKit Playground",
     category: "internal-tools",
     categoryName: "Developer Tools",
@@ -184,7 +223,7 @@ export const projects = [
     }
   },
   {
-    id: 8,
+    id: 9,
     title: "Local Agent Playground",
     category: "ai-experimentation",
     categoryName: "AI Experimentation",
@@ -210,7 +249,7 @@ export const projects = [
     }
   },
   {
-    id: 9,
+    id: 10,
     title: "Fishee GIS Platform",
     category: "gis-public",
     categoryName: "GIS & Public Web",
@@ -235,4 +274,7 @@ export const projects = [
       status: "Completed · Academic project"
     }
   }
-];
+].sort(
+  (left, right) =>
+    projectPriority.indexOf(left.title) - projectPriority.indexOf(right.title)
+);

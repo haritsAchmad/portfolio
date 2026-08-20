@@ -167,7 +167,7 @@ const submitForm = async () => {
                   <span class="skill-tag">MySQL / MariaDB</span>
                   <span class="skill-tag">Git</span>
                   <span class="skill-tag">Postman</span>
-                  <span class="skill-tag">Docker</span>
+                  <span class="skill-tag">Docker (Learning)</span>
                   <span class="skill-tag">Ollama</span>
                 </div>
               </div>
@@ -195,15 +195,15 @@ const submitForm = async () => {
                   <h4 class="job-role">Web Programmer (Contract)</h4>
                   <h5 class="job-company">Universitas Indonesia</h5>
                   <ul v-if="locale === 'id'" class="job-details">
-                    <li>Berkontribusi pada Iterasi 2 SICAKEP untuk pengembangan dan peningkatan fitur pengelolaan capaian kinerja pegawai.</li>
-                    <li>Mengembangkan Iterasi 2 ORBIT, mencakup analisis jabatan dan beban kerja, monitoring, pelaporan, data pegawai, serta alur organisasi.</li>
-                    <li>Berkontribusi pada pengembangan awal COSMO, sistem rekrutmen berbasis Go, Gin, Nuxt, Vue, PostgreSQL, dan REST API.</li>
+                    <li>Berkontribusi pada pengembangan Iterasi 2 SICAKEP sebagai bagian dari tim.</li>
+                    <li>Menangani development Iterasi 2 ORBIT, dengan kolaborasi internal untuk kebutuhan, desain, dan pengujian.</li>
+                    <li>Berkontribusi pada pengembangan awal COSMO sebagai bagian dari tim menggunakan Go, Gin, Nuxt, Vue, PostgreSQL, dan REST API.</li>
                     <li>Menginvestigasi dan menyelesaikan isu produksi pada legacy code, session, business rules, dan anomali data sistem SDM.</li>
                   </ul>
                   <ul v-else class="job-details">
-                    <li>Contributed to SICAKEP Iteration 2 by developing and improving employee-performance management features.</li>
-                    <li>Developed ORBIT Iteration 2, covering job and workload analysis, monitoring, reporting, employee data, and organizational workflows.</li>
-                    <li>Contributed to the initial development of COSMO, a recruitment system built with Go, Gin, Nuxt, Vue, PostgreSQL, and REST APIs.</li>
+                    <li>Contributed to SICAKEP Iteration 2 as part of the development team.</li>
+                    <li>Handled development for ORBIT Iteration 2, with internal collaboration on requirements, design, and testing.</li>
+                    <li>Contributed to the initial development of COSMO as part of the team using Go, Gin, Nuxt, Vue, PostgreSQL, and REST APIs.</li>
                     <li>Investigated and resolved production issues involving legacy code, sessions, business rules, and anomalous HR data.</li>
                   </ul>
                 </div>
@@ -216,13 +216,13 @@ const submitForm = async () => {
                   <h4 class="job-role">Web Programmer Intern</h4>
                   <h5 class="job-company">Universitas Indonesia</h5>
                   <ul v-if="locale === 'id'" class="job-details">
-                    <li>Berkontribusi pada Iterasi 1 SICAKEP untuk mendukung pengelolaan capaian kinerja pegawai.</li>
-                    <li>Mengembangkan Iterasi 1 ORBIT, termasuk modul awal kuesioner analisis beban kerja menggunakan PHP 5.3, Symfony 1, PostgreSQL 8.3, dan JavaScript.</li>
+                    <li>Berkontribusi pada pengembangan Iterasi 1 SICAKEP sebagai bagian dari tim.</li>
+                    <li>Menangani development Iterasi 1 ORBIT, termasuk modul awal kuesioner analisis beban kerja, dengan kolaborasi internal untuk kebutuhan, desain, dan pengujian.</li>
                     <li>Mengembangkan workflow data pegawai serta melakukan testing, debugging, dan penyempurnaan fitur berdasarkan umpan balik pengguna.</li>
                   </ul>
                   <ul v-else class="job-details">
-                    <li>Contributed to SICAKEP Iteration 1 to support employee-performance achievement management.</li>
-                    <li>Developed ORBIT Iteration 1, including the initial workload-analysis questionnaire using PHP 5.3, Symfony 1, PostgreSQL 8.3, and JavaScript.</li>
+                    <li>Contributed to SICAKEP Iteration 1 as part of the development team.</li>
+                    <li>Handled development for ORBIT Iteration 1, including the initial workload-analysis questionnaire, with internal collaboration on requirements, design, and testing.</li>
                     <li>Developed employee-data workflows and performed testing, debugging, and iterative improvements based on user feedback.</li>
                   </ul>
                 </div>
