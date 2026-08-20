@@ -167,7 +167,7 @@ const submitForm = async () => {
                   <span class="skill-tag">MySQL / MariaDB</span>
                   <span class="skill-tag">Git</span>
                   <span class="skill-tag">Postman</span>
-                  <span class="skill-tag">Docker (Learning)</span>
+                  <span class="skill-tag">Docker</span>
                   <span class="skill-tag">Ollama</span>
                 </div>
               </div>
@@ -191,18 +191,20 @@ const submitForm = async () => {
               <div class="timeline-item">
                 <div class="timeline-marker ui-marker"></div>
                 <div class="timeline-content">
-                  <span class="job-date">{{ locale === "en" ? "March 2026 - Present" : "Maret 2026 - Sekarang" }}</span>
+                  <span class="job-date">{{ locale === "en" ? "March 2026 - August 2026" : "Maret 2026 - Agustus 2026" }}</span>
                   <h4 class="job-role">Web Programmer (Contract)</h4>
                   <h5 class="job-company">Universitas Indonesia</h5>
                   <ul v-if="locale === 'id'" class="job-details">
-                    <li>Mengembangkan dan memelihara frontend serta backend sistem internal menggunakan Go, Gin, Nuxt, Vue, PHP, Symfony 1, PostgreSQL, dan JavaScript.</li>
-                    <li>Mengimplementasikan fitur monitoring, pelaporan, pengelolaan data, dan penyesuaian alur kerja berdasarkan kebutuhan pengguna internal.</li>
-                    <li>Mengembangkan sistem baru menggunakan Go, Gin, Nuxt, Vue, PostgreSQL, dan REST API.</li>
+                    <li>Berkontribusi pada Iterasi 2 SICAKEP untuk pengembangan dan peningkatan fitur pengelolaan capaian kinerja pegawai.</li>
+                    <li>Mengembangkan Iterasi 2 ORBIT, mencakup analisis jabatan dan beban kerja, monitoring, pelaporan, data pegawai, serta alur organisasi.</li>
+                    <li>Berkontribusi pada pengembangan awal COSMO, sistem rekrutmen berbasis Go, Gin, Nuxt, Vue, PostgreSQL, dan REST API.</li>
+                    <li>Menginvestigasi dan menyelesaikan isu produksi pada legacy code, session, business rules, dan anomali data sistem SDM.</li>
                   </ul>
                   <ul v-else class="job-details">
-                    <li>Develop and maintain frontend and backend components for internal systems using Go, Gin, Nuxt, Vue, PHP, Symfony 1, PostgreSQL, and JavaScript.</li>
-                    <li>Implement monitoring, reporting, data-management, and workflow features based on internal-user requirements.</li>
-                    <li>Develop new systems using Go, Gin, Nuxt, Vue, PostgreSQL, and REST APIs.</li>
+                    <li>Contributed to SICAKEP Iteration 2 by developing and improving employee-performance management features.</li>
+                    <li>Developed ORBIT Iteration 2, covering job and workload analysis, monitoring, reporting, employee data, and organizational workflows.</li>
+                    <li>Contributed to the initial development of COSMO, a recruitment system built with Go, Gin, Nuxt, Vue, PostgreSQL, and REST APIs.</li>
+                    <li>Investigated and resolved production issues involving legacy code, sessions, business rules, and anomalous HR data.</li>
                   </ul>
                 </div>
               </div>
@@ -214,12 +216,14 @@ const submitForm = async () => {
                   <h4 class="job-role">Web Programmer Intern</h4>
                   <h5 class="job-company">Universitas Indonesia</h5>
                   <ul v-if="locale === 'id'" class="job-details">
-                    <li>Mengembangkan modul awal instrumen kuesioner beban kerja berbasis Symfony 1 dan PostgreSQL 8.3.</li>
-                    <li>Membantu pemeliharaan modul database kepegawaian dan penyesuaian fitur berdasarkan proses bisnis internal.</li>
+                    <li>Berkontribusi pada Iterasi 1 SICAKEP untuk mendukung pengelolaan capaian kinerja pegawai.</li>
+                    <li>Mengembangkan Iterasi 1 ORBIT, termasuk modul awal kuesioner analisis beban kerja menggunakan PHP 5.3, Symfony 1, PostgreSQL 8.3, dan JavaScript.</li>
+                    <li>Mengembangkan workflow data pegawai serta melakukan testing, debugging, dan penyempurnaan fitur berdasarkan umpan balik pengguna.</li>
                   </ul>
                   <ul v-else class="job-details">
-                    <li>Developed the initial workload questionnaire module using Symfony 1 and PostgreSQL 8.3.</li>
-                    <li>Maintained employee-database modules and adapted features to internal business processes.</li>
+                    <li>Contributed to SICAKEP Iteration 1 to support employee-performance achievement management.</li>
+                    <li>Developed ORBIT Iteration 1, including the initial workload-analysis questionnaire using PHP 5.3, Symfony 1, PostgreSQL 8.3, and JavaScript.</li>
+                    <li>Developed employee-data workflows and performed testing, debugging, and iterative improvements based on user feedback.</li>
                   </ul>
                 </div>
               </div>
