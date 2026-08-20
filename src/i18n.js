@@ -28,7 +28,7 @@ const messages = {
       title: "Profile & Experience",
       subtitle: "A summary of my professional experience, education, and technical capabilities in internal systems, APIs, and web development.",
       profile: "Education & Profile",
-      bio: "I am a web developer with professional experience across frontend and backend development using Go, Gin, Nuxt, Vue, PHP, Symfony, PostgreSQL, and REST APIs. I maintain legacy codebases, build new applications, and translate business workflows into practical features for internal users.",
+      bio: "I am a software engineer and backend web developer with professional experience building and maintaining business applications using Go, PHP, Symfony, PostgreSQL, JavaScript, and modern web frameworks. I digitalize business workflows, develop HR information systems, debug production issues, and build maintainable backend solutions.",
       skills: "Core Technical Skills",
       experience: "Professional Experience",
       present: "Present"
@@ -64,7 +64,7 @@ const messages = {
       title: "Profil & Pengalaman",
       subtitle: "Ringkasan pengalaman profesional, pendidikan, dan kemampuan teknis dalam pengembangan sistem internal, API, dan aplikasi web.",
       profile: "Pendidikan & Profil",
-      bio: "Saya adalah Web Developer dengan pengalaman profesional mengembangkan frontend dan backend sistem internal menggunakan Go, Gin, Nuxt, Vue, PHP, Symfony, PostgreSQL, dan REST API. Saya terbiasa memelihara codebase legacy, mengembangkan aplikasi baru, serta menerjemahkan kebutuhan dan alur bisnis menjadi fitur yang dapat digunakan oleh pengguna internal.",
+      bio: "Saya adalah Software Engineer dan Backend Web Developer dengan pengalaman profesional mengembangkan serta memelihara aplikasi bisnis menggunakan Go, PHP, Symfony, PostgreSQL, JavaScript, dan framework web modern. Saya terbiasa mendigitalisasi alur bisnis, mengembangkan sistem informasi SDM, menangani isu produksi, dan membangun solusi backend yang mudah dipelihara.",
       skills: "Keahlian Teknis Utama", experience: "Pengalaman Kerja", present: "Sekarang"
     },
     contact: {
