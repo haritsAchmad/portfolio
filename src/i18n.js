@@ -6,7 +6,7 @@ const messages = {
   en: {
     nav: { home: "Home", projects: "Projects", experience: "Experience", contact: "Contact", cv: "Download CV" },
     hero: {
-      badge: "Web Programmer · Backend & Web Development",
+      badge: "Open to Opportunities · Backend & Web Development",
       titleBefore: "Building",
       titleAccent: "internal systems",
       titleAfter: "that are clear, secure, and reliable.",
@@ -46,7 +46,7 @@ const messages = {
   id: {
     nav: { home: "Beranda", projects: "Proyek", experience: "Pengalaman", contact: "Kontak", cv: "Unduh CV" },
     hero: {
-      badge: "Web Programmer · Backend & Web Development",
+      badge: "Terbuka untuk Peluang Baru · Backend & Web Development",
       titleBefore: "Membangun",
       titleAccent: "sistem internal",
       titleAfter: "yang jelas, aman, dan dapat diandalkan.",
@@ -74,7 +74,7 @@ const messages = {
       description: "Hubungi saya melalui email, telepon, atau akun profesional berikut.",
       formName: "Nama", formEmail: "Email", formMessage: "Pesan",
       namePlaceholder: "Nama Anda", messagePlaceholder: "Tulis pesan Anda di sini...",
-      send: "Kirim Pesan", sending: "Mengirim...", success: "Pesan terkirim!", successDescription: "Terima kasih. Saya akan membalas email Anda secepatnya."
+      send: "Kirim Pesan", sending: "Mengirim...", success: "Pesan Terkirim!", successDescription: "Terima kasih. Saya akan membalas email Anda secepatnya."
     }
   }
 };

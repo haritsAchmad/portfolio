@@ -14,7 +14,7 @@ test('public page has no common secret markers', async ({ page }, testInfo) => {
 test('query and project data cannot execute markup', async ({ page }, testInfo) => {
   annotate(testInfo, { endpoint: 'GET /?q=<script>… and /#projects', expected: 'No script execution', risk: 'High — XSS', root_cause: 'Unsafe HTML or query interpolation' })
   await page.goto('/?q=%3Cscript%3Ewindow.__portfolioXss%3D1%3C%2Fscript%3E')
-  await expect(page.locator('.project-card')).toHaveCount(10)
+  await expect(page.locator('.project-card')).toHaveCount(11)
   expect(await page.evaluate(() => window.__portfolioXss || 0)).toBe(0)
 })
 
@@ -53,7 +53,7 @@ test('contact validation covers required, format, length, markup, repeat, and er
   await expect(page.getByRole('alert')).toContainText('gangguan')
   status = 200
   await page.locator('form').evaluate(form => form.requestSubmit())
-  await expect(page.getByText('Pesan Terkirim!')).toBeVisible()
+  await expect(page.getByText('Message sent!')).toBeVisible()
 
   await page.reload()
   await name.fill('Test User')
