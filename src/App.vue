@@ -191,8 +191,8 @@ const submitForm = async () => {
               <div class="timeline-item">
                 <div class="timeline-marker ui-marker"></div>
                 <div class="timeline-content">
-                  <span class="job-date">{{ locale === "en" ? "March 2026 - August 2026" : "Maret 2026 - Agustus 2026" }}</span>
-                  <h4 class="job-role">Web Programmer (Contract)</h4>
+                  <span class="job-date">{{ locale === "en" ? "March 2026 - August 31, 2026" : "Maret 2026 - 31 Agustus 2026" }}</span>
+                  <h4 class="job-role">{{ locale === "en" ? "Web Programmer (Contract, completed)" : "Web Programmer (Kontrak, selesai)" }}</h4>
                   <h5 class="job-company">Universitas Indonesia</h5>
                   <ul v-if="locale === 'id'" class="job-details">
                     <li>Berkontribusi pada pengembangan Iterasi 2 SICAKEP sebagai bagian dari tim.</li>

@@ -1,4 +1,5 @@
 const projectPriority = [
+  "Convertbox",
   "Local Agent Playground",
   "DevKit Playground",
   "Go POS Playground",
@@ -12,6 +13,33 @@ const projectPriority = [
 ];
 
 export const projects = [
+  {
+    id: 11,
+    title: "Convertbox",
+    category: "internal-tools",
+    categoryName: "Developer Tools",
+    description: "Layanan konversi file self-hosted berbasis Go dengan penyimpanan sementara, antrean worker, dan validasi berlapis untuk data terstruktur, gambar, dokumen, Office, serta PDF.",
+    role: "Software Engineer (Personal Project)",
+    techStack: ["Go", "Redis", "Docker", "LibreOffice", "ImageMagick", "Poppler"],
+    features: [
+      "Membangun API dan worker terpisah dengan Redis-backed queue, job persistence, bounded concurrency, timeout, serta penghapusan file otomatis.",
+      "Mendukung konversi CSV, JSON, XML, YAML, PNG, JPEG, WebP, Markdown, HTML, Office ke PDF, serta halaman pertama PDF ke gambar.",
+      "Memperketat upload melalui pemeriksaan MIME, magic bytes, struktur OOXML/PDF, proteksi CSV injection dan decompression bomb, path isolation, serta container resource limits."
+    ],
+    impact: "Menggabungkan workflow konversi file yang praktis dengan batas keamanan eksplisit, capability detection saat runtime, metrik Prometheus, dan deployment container yang dapat direproduksi.",
+    status: "Aktif dikembangkan · Public repository",
+    primaryTech: "Go + Redis",
+    repositoryUrl: "https://github.com/haritsAchmad/converter-tool-playground",
+    colorClass: "glow-modern",
+    badgeColor: "#06B6D4",
+    en: {
+      description: "A self-hosted Go file-conversion service with short-lived storage, queued workers, and layered validation for structured data, images, documents, Office files, and PDFs.",
+      role: "Software Engineer · Personal Project",
+      features: ["Built separate API and worker processes with a Redis-backed queue, persistent job state, bounded concurrency, deadlines, and automatic cleanup.", "Supported CSV, JSON, XML, YAML, PNG, JPEG, WebP, Markdown, HTML, Office-to-PDF, and first-page PDF-to-image conversions.", "Hardened uploads with MIME and magic-byte checks, OOXML and PDF validation, CSV-injection and decompression-bomb defenses, isolated paths, and container resource limits."],
+      impact: "Combines a practical file-conversion workflow with explicit security boundaries, runtime capability detection, Prometheus metrics, and reproducible container deployment.",
+      status: "Actively developed · Public repository"
+    }
+  },
   {
     id: 1,
     title: "Go POS Playground",
@@ -79,7 +107,7 @@ export const projects = [
       "Berkontribusi pada antarmuka rekrutmen dan penilaian wawancara bersama tim pengembangan."
     ],
     impact: "Ditujukan untuk mengurangi proses manual dan membantu pemantauan tahapan rekrutmen secara lebih terstruktur.",
-    status: "Sedang dikerjakan · Source code tidak dipublikasikan",
+    status: "Kontribusi selesai Agustus 2026 · Source code tidak dipublikasikan",
     primaryTech: "Go + Nuxt",
     colorClass: "glow-modern",
     badgeColor: "#0EA5E9"
@@ -88,7 +116,7 @@ export const projects = [
       role: "Development Team Member · Professional Project",
       features: ["Contributed to the initial development of COSMO as part of the team.", "Helped develop backend endpoints, search, filtering, and selection-status management.", "Contributed to recruitment and interview-assessment interfaces with the development team."],
       impact: "Designed to reduce manual administration and make recruitment stages easier to monitor consistently.",
-      status: "In development · Source code confidential"
+      status: "Contribution completed August 2026 · Source code confidential"
     }
   },
   {
@@ -105,7 +133,7 @@ export const projects = [
       "Melakukan testing, debugging, dan penyempurnaan fitur secara iteratif berdasarkan kebutuhan serta umpan balik internal."
     ],
     impact: "Mendukung proses pengelolaan capaian kinerja pegawai melalui workflow sistem yang lebih terstruktur.",
-    status: "Professional project · Source code tidak dipublikasikan",
+    status: "Kontribusi selesai Agustus 2026 · Source code tidak dipublikasikan",
     primaryTech: "PHP + Symfony",
     colorClass: "glow-legacy",
     badgeColor: "#EF4444"
@@ -114,7 +142,7 @@ export const projects = [
       role: "Development Team Member · Professional Project",
       features: ["Contributed to Iterations 1 and 2 as part of the development team.", "Supported employee-performance achievement management and the digitalization of previously manual workflows.", "Performed testing, debugging, and iterative feature improvements based on internal requirements and feedback."],
       impact: "Supports employee-performance achievement management through a more structured system workflow.",
-      status: "Professional project · Source code confidential"
+      status: "Contribution completed August 2026 · Source code confidential"
     }
   },
   {
@@ -131,7 +159,7 @@ export const projects = [
       "Memelihara aplikasi legacy dan menyelesaikan isu produksi terkait business rules, session, serta anomali data."
     ],
     impact: "Mendukung digitalisasi proses organisasi dan SDM sekaligus meningkatkan keterlacakan data serta workflow internal.",
-    status: "Professional project · Source code tidak dipublikasikan",
+    status: "Kontribusi selesai Agustus 2026 · Source code tidak dipublikasikan",
     primaryTech: "PHP 5.3",
     colorClass: "glow-legacy",
     badgeColor: "#F97316",
@@ -140,7 +168,7 @@ export const projects = [
       role: "Developer · Professional Project",
       features: ["Handled development for Iterations 1 and 2, while requirements, design, and testing involved internal collaboration.", "Developed job and workload analysis, employee-data management, monitoring, reporting, and organizational workflows.", "Maintained the legacy application and resolved production issues involving business rules, sessions, and anomalous data."],
       impact: "Supports the digitalization of organizational and HR processes while improving internal data and workflow traceability.",
-      status: "Professional project · Source code confidential"
+      status: "Contribution completed August 2026 · Source code confidential"
     }
   },
   {
