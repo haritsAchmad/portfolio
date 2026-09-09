@@ -15,6 +15,7 @@ const { locale, setLocale, t } = useI18n();
         <a href="#hero" class="nav-link">{{ t("nav.home") }}</a>
         <a href="#projects" class="nav-link">{{ t("nav.projects") }}</a>
         <a href="#about" class="nav-link">{{ t("nav.experience") }}</a>
+        <a href="#certifications" class="nav-link">{{ locale === "en" ? "Certifications" : "Sertifikasi" }}</a>
         <a href="#contact" class="nav-link">{{ t("nav.contact") }}</a>
         <div class="language-switch" role="group" aria-label="Language">
           <button :class="{ active: locale === 'en' }" :aria-pressed="locale === 'en'" @click="setLocale('en')">EN</button>
@@ -64,7 +65,7 @@ const { locale, setLocale, t } = useI18n();
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.25rem;
 }
 
 .nav-link {
@@ -130,7 +131,7 @@ const { locale, setLocale, t } = useI18n();
   background: var(--color-modern);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .nav-links {
     gap: 1rem;
   }
