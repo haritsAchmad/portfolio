@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { projects } from "./data/projects";
+import CertificationsSection from "./components/CertificationsSection.vue";
 import Navbar from "./components/Navbar.vue";
 import HeroSection from "./components/HeroSection.vue";
 import ProjectFilter from "./components/ProjectFilter.vue";
@@ -268,6 +269,8 @@ const submitForm = async () => {
         </div>
       </div>
     </section>
+
+    <CertificationsSection />
 
     <section id="projects" class="section">
       <div class="container animate-fade-in">
