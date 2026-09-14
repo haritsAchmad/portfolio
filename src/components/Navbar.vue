@@ -1,7 +1,9 @@
 <script setup>
 import { useI18n } from "../i18n";
+import { useCv } from "../useCv";
 
 const { locale, setLocale, t } = useI18n();
+const { cvUrl, cvFilename } = useCv();
 </script>
 
 <template>
@@ -21,7 +23,7 @@ const { locale, setLocale, t } = useI18n();
           <button :class="{ active: locale === 'en' }" :aria-pressed="locale === 'en'" @click="setLocale('en')">EN</button>
           <button :class="{ active: locale === 'id' }" :aria-pressed="locale === 'id'" @click="setLocale('id')">ID</button>
         </div>
-        <a href="/Harits_Achmad_Fauzan_Resume.pdf" download class="btn-cv glass">{{ t("nav.cv") }}</a>
+        <a :href="cvUrl" :download="cvFilename" class="btn-cv glass">{{ t("nav.cv") }}</a>
       </div>
     </div>
   </nav>

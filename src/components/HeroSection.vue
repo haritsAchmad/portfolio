@@ -1,7 +1,9 @@
 <script setup>
 import { useI18n } from "../i18n";
+import { useCv } from "../useCv";
 
 const { locale, t } = useI18n();
+const { cvUrl, cvFilename } = useCv();
 </script>
 
 <template>
@@ -27,8 +29,8 @@ const { locale, t } = useI18n();
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary">{{ t("hero.projects") }}</a>
           <a
-            href="/Harits_Achmad_Fauzan_Resume.pdf"
-            download
+            :href="cvUrl"
+            :download="cvFilename"
             class="btn btn-secondary"
           >
             {{ t("hero.cv") }}
