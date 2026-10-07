@@ -1,9 +1,6 @@
 const projectPriority = [
-  "Convertbox",
   "Local Agent Playground",
-  "DevKit Playground",
-  "Go POS Playground",
-  "Go AI Playground",
+  "naskahCheck",
   "COSMO",
   "ORBIT",
   "SICAKEP",
@@ -13,86 +10,6 @@ const projectPriority = [
 ];
 
 export const projects = [
-  {
-    id: 11,
-    title: "Convertbox",
-    category: "internal-tools",
-    categoryName: "Developer Tools",
-    description: "Layanan konversi file self-hosted berbasis Go dengan penyimpanan sementara, antrean worker, dan validasi berlapis untuk data terstruktur, gambar, dokumen, Office, serta PDF.",
-    role: "Software Engineer (Personal Project)",
-    techStack: ["Go", "Redis", "Docker", "LibreOffice", "ImageMagick", "Poppler"],
-    features: [
-      "Membangun API dan worker terpisah dengan Redis-backed queue, job persistence, bounded concurrency, timeout, serta penghapusan file otomatis.",
-      "Mendukung konversi CSV, JSON, XML, YAML, PNG, JPEG, WebP, Markdown, HTML, Office ke PDF, serta halaman pertama PDF ke gambar.",
-      "Memperketat upload melalui pemeriksaan MIME, magic bytes, struktur OOXML/PDF, proteksi CSV injection dan decompression bomb, path isolation, serta container resource limits."
-    ],
-    impact: "Menggabungkan workflow konversi file yang praktis dengan batas keamanan eksplisit, capability detection saat runtime, metrik Prometheus, dan deployment container yang dapat direproduksi.",
-    status: "Aktif dikembangkan · Public repository",
-    primaryTech: "Go + Redis",
-    repositoryUrl: "https://github.com/haritsAchmad/converter-tool-playground",
-    colorClass: "glow-modern",
-    badgeColor: "#06B6D4",
-    en: {
-      description: "A self-hosted Go file-conversion service with short-lived storage, queued workers, and layered validation for structured data, images, documents, Office files, and PDFs.",
-      role: "Software Engineer · Personal Project",
-      features: ["Built separate API and worker processes with a Redis-backed queue, persistent job state, bounded concurrency, deadlines, and automatic cleanup.", "Supported CSV, JSON, XML, YAML, PNG, JPEG, WebP, Markdown, HTML, Office-to-PDF, and first-page PDF-to-image conversions.", "Hardened uploads with MIME and magic-byte checks, OOXML and PDF validation, CSV-injection and decompression-bomb defenses, isolated paths, and container resource limits."],
-      impact: "Combines a practical file-conversion workflow with explicit security boundaries, runtime capability detection, Prometheus metrics, and reproducible container deployment.",
-      status: "Actively developed · Public repository"
-    }
-  },
-  {
-    id: 1,
-    title: "Go POS Playground",
-    category: "internal-tools",
-    categoryName: "Internal Tools",
-    description: "Sistem point of sale dan operasional koperasi end-to-end untuk mengelola penjualan, pembelian, stok, piutang, dan master data melalui satu workflow terintegrasi.",
-    role: "Full-stack Developer (Personal Project)",
-    techStack: ["Go", "net/http", "Nuxt", "PostgreSQL", "Docker", "Playwright"],
-    features: [
-      "Mengembangkan transaksi atomik, satuan kemasan/eceran, piutang, serta simulator pembayaran QRIS dengan reservasi stok dan idempotency key.",
-      "Membangun autentikasi JWT, refresh-token rotation, session revocation, RBAC, audit log, dan soft delete.",
-      "Menambahkan pencarian, filter, sorting, pagination, laporan Excel/PDF, Docker Compose, integration test, dan benchmark PostgreSQL."
-    ],
-    impact: "Menjadi playground operasional end-to-end untuk mempraktikkan layered architecture, transaksi database, keamanan session, dan pengujian otorisasi.",
-    status: "Aktif dikembangkan",
-    primaryTech: "Go + Nuxt",
-    repositoryUrl: "https://github.com/haritsAchmad/go-pos-playground",
-    colorClass: "glow-modern",
-    badgeColor: "#6366F1"
-    ,en: {
-      description: "An end-to-end point-of-sale and cooperative operations system that connects sales, purchasing, inventory, receivables, and master data in one workflow.",
-      role: "Full-stack Developer · Personal Project",
-      features: ["Developed atomic transactions, package and retail units, receivables, and a simulated QRIS payment lifecycle with stock reservation and idempotency keys.", "Built JWT authentication, refresh-token rotation, session revocation, RBAC, audit logs, and soft deletion.", "Added search, filtering, sorting, pagination, Excel/PDF reports, Docker Compose, integration tests, and PostgreSQL benchmarks."],
-      impact: "An end-to-end engineering playground for layered architecture, database transactions, payment workflows, security, and automated testing.",
-      status: "Actively developed"
-    }
-  },
-  {
-    id: 2,
-    title: "Go AI Playground",
-    category: "ai-experimentation",
-    categoryName: "AI Experimentation",
-    description: "Playground chat AI lokal berbasis character card dengan backend Go, antarmuka Nuxt, model Ollama, dan penyimpanan percakapan di SQLite.",
-    role: "Full-stack Developer (Personal Project)",
-    techStack: ["Go", "Nuxt", "Ollama", "SQLite", "NDJSON", "Docker"],
-    features: [
-      "Mengimplementasikan chat streaming NDJSON, pemilihan model, generation preset, kontrol stop, dan statistik token serta kecepatan.",
-      "Membangun character card dan library karakter dengan import/export, tag, pencarian, serta beberapa percakapan per karakter.",
-      "Menyimpan state dan history di SQLite dengan cache browser sebagai fallback offline serta menyediakan Docker Compose dan quality checks."
-    ],
-    impact: "Menjadi laboratorium local-first untuk memahami prompt karakter, streaming model, persistensi percakapan, dan integrasi Ollama end-to-end.",
-    status: "Aktif dikembangkan · Repository privat",
-    primaryTech: "Go + Ollama",
-    colorClass: "glow-ai",
-    badgeColor: "#A855F7"
-    ,en: {
-      description: "A local character-card AI chat playground with a Go backend, Nuxt interface, Ollama models, and SQLite conversation storage.",
-      role: "Full-stack Developer · Personal Project",
-      features: ["Implemented NDJSON chat streaming, model selection, generation presets, stop controls, and token and speed statistics.", "Built character cards and a character library with import/export, tags, search, and multiple conversations per character.", "Persisted state and history in SQLite with a browser-cache offline fallback, plus Docker Compose and automated quality checks."],
-      impact: "A local-first lab for understanding character prompting, model streaming, conversation persistence, and end-to-end Ollama integration.",
-      status: "Actively developed · Private repository"
-    }
-  },
   {
     id: 3,
     title: "COSMO",
@@ -224,56 +141,77 @@ export const projects = [
     }
   },
   {
-    id: 8,
-    title: "DevKit Playground",
-    category: "internal-tools",
-    categoryName: "Developer Tools",
-    description: "Toolbox developer offline-first berbasis Go yang menyediakan utilitas deterministik untuk pekerjaan backend dan inspeksi repository sehari-hari.",
-    role: "Software Engineer (Personal Project)",
-    techStack: ["Go", "CLI", "JSON", "CI", "Go Test", "GitHub Actions"],
-    features: [
-      "Membangun utilitas UUID, secret, hashing, inspeksi JWT/JSON, perbandingan env, inspeksi file/repository/text/port, timestamp, dan Base64.",
-      "Memisahkan reusable command logic dari presentasi CLI serta menyediakan output manusia dan JSON terstruktur untuk program dan AI agent.",
-      "Mendefinisikan command contracts, exit code, pengujian otomatis, CI, dokumentasi arsitektur, dan alur release berversi."
+    "id": 9,
+    "title": "Local Agent Playground",
+    "category": "ai-experimentation",
+    "categoryName": "AI Experimentation",
+    "description": "Coding agent lokal berbasis Go dan Ollama dengan chat streaming melalui CLI maupun web, session persisten, tool registry, dan kontrol approval di dalam workspace.",
+    "role": "Software Engineer (Personal Project)",
+    "techStack": [
+      "Go",
+      "Ollama",
+      "SQLite",
+      "Local LLM",
+      "CLI",
+      "Security"
     ],
-    impact: "Menyatukan pekerjaan developer yang berulang ke dalam binary Go yang ringan, dapat diaudit, dan tetap berfungsi tanpa jaringan atau runtime tambahan.",
-    status: "Early development · Public repository",
-    primaryTech: "Go CLI",
-    repositoryUrl: "https://github.com/haritsAchmad/devkit-playground",
-    colorClass: "glow-modern",
-    badgeColor: "#14B8A6",
-    en: {
-      description: "An offline-first Go developer toolbox offering deterministic utilities for recurring backend and repository-inspection tasks.",
-      role: "Software Engineer · Personal Project",
-      features: ["Built utilities for UUIDs, secrets, hashing, JWT/JSON inspection, env comparison, file/repository/text/port inspection, timestamps, and Base64.", "Separated reusable command logic from CLI presentation and exposed both human-readable and structured JSON output for programs and AI agents.", "Defined command contracts, exit codes, automated tests, CI, architecture documentation, and a versioned release workflow."],
-      impact: "Consolidates recurring developer tasks into a lightweight, auditable Go binary that works without a network or additional runtime dependencies.",
-      status: "Early development · Public repository"
+    "features": [
+      "Membangun antarmuka CLI dan web lokal dengan chat streaming, session SQLite yang dapat dilanjutkan, serta audit tool call dan keputusan approval.",
+      "Membatasi akses ke workspace dan menerapkan preview diff, approval perubahan file, command allowlist tanpa shell, timeout, serta batas langkah dan output.",
+      "Mengembangkan registry tool eksternal dan mode hybrid opsional untuk pencarian web serta pembacaan halaman HTTPS dengan approval akses jaringan."
+    ],
+    "impact": "Mengeksplorasi fondasi coding agent local-first yang berguna sekaligus menjaga kontrol pengguna, keterlacakan, dan batas keamanan yang eksplisit.",
+    "status": "MVP · Active development · Private repository",
+    "primaryTech": "Go + Ollama",
+    "colorClass": "glow-ai",
+    "badgeColor": "#A855F7",
+    "en": {
+      "description": "A Go and Ollama local coding agent with streaming CLI and web chat, persistent sessions, a tool registry, and approval controls within a configured workspace.",
+      "role": "Software Engineer · Personal Project",
+      "features": [
+        "Built CLI and local web interfaces with streaming chat, resumable SQLite sessions, and auditable tool calls and approval decisions.",
+        "Enforced workspace boundaries, diff previews, approval for file changes, shell-free command allowlisting, timeouts, and step and output limits.",
+        "Developed an external tool registry and an optional hybrid mode for web search and HTTPS page reading with network-access approval."
+      ],
+      "impact": "Explores a useful local-first coding-agent foundation while preserving user control, traceability, and explicit safety boundaries.",
+      "status": "MVP · Active development · Private repository"
     }
   },
   {
-    id: 9,
-    title: "Local Agent Playground",
-    category: "ai-experimentation",
-    categoryName: "AI Experimentation",
-    description: "Coding agent lokal offline-first berbasis Go dan Ollama dengan tool terdaftar, batas workspace, approval eksplisit, session persisten, dan audit trail.",
-    role: "Software Engineer (Personal Project)",
-    techStack: ["Go", "Ollama", "SQLite", "Local LLM", "CLI", "Security"],
-    features: [
-      "Mengembangkan chat streaming dengan session SQLite yang dapat dilanjutkan serta audit tool call dan keputusan approval.",
-      "Membatasi filesystem ke satu workspace dan mewajibkan preview diff serta approval sebelum perubahan file dilakukan.",
-      "Menerapkan allowlist command tanpa shell, path validation, offline Go module mode, timeout, batas langkah, dan batas output."
+    "id": 12,
+    "title": "naskahCheck",
+    "category": "internal-tools",
+    "categoryName": "Document Tools",
+    "description": "Aplikasi web lokal untuk meninjau naskah akademik DOCX dan PDF melalui pemeriksaan bahasa, pola kutipan, dan aturan struktur yang dikonfigurasi pengguna.",
+    "role": "Software Engineer (Personal Project)",
+    "techStack": [
+      "Python",
+      "Django",
+      "SQLite",
+      "pdfminer.six",
+      "pikepdf",
+      "JavaScript"
     ],
-    impact: "Mengeksplorasi fondasi coding agent local-first yang berguna sekaligus menjaga kontrol pengguna, keterlacakan, dan batas keamanan yang eksplisit.",
-    status: "MVP · Active development · Private repository",
-    primaryTech: "Go + Ollama",
-    colorClass: "glow-ai",
-    badgeColor: "#A855F7",
-    en: {
-      description: "An offline-first local coding agent built with Go and Ollama, featuring registered tools, workspace boundaries, explicit approval, persistent sessions, and an audit trail.",
-      role: "Software Engineer · Personal Project",
-      features: ["Developed streaming chat with resumable SQLite sessions and auditable tool calls and approval decisions.", "Restricted filesystem access to one workspace and required diff previews and explicit approval before modifying files.", "Implemented shell-free command allowlisting, path validation, offline Go module mode, timeouts, step limits, and output limits."],
-      impact: "Explores a useful local-first coding-agent foundation while preserving user control, traceability, and explicit safety boundaries.",
-      status: "MVP · Active development · Private repository"
+    "features": [
+      "Membangun upload tervalidasi dan worker antrean dengan ekstraksi DOCX/PDF terisolasi, pembatalan job, serta snapshot aturan dan istilah per pemeriksaan.",
+      "Mengembangkan pemeriksaan bahasa mekanis, kandidat typo, pola kutipan APA/IEEE, dan struktur naskah dengan cakupan serta batas penilaian yang ditampilkan kepada pengguna.",
+      "Menyediakan tinjauan istilah per kemunculan, pengecualian pengguna, laporan temuan, serta highlight dan komentar pada PDF yang memiliki temuan berlokasi."
+    ],
+    "impact": "Membantu penulis meninjau naskah dengan temuan yang dapat ditelusuri ke lokasi dan aturan pemeriksaan, sambil mempertahankan keputusan koreksi pada pengguna.",
+    "status": "Aktif dikembangkan · Aplikasi lokal",
+    "primaryTech": "Python + Django",
+    "colorClass": "glow-modern",
+    "badgeColor": "#06B6D4",
+    "en": {
+      "description": "A local web application for reviewing academic DOCX and PDF manuscripts through language checks, citation-pattern screening, and user-configured structural rules.",
+      "role": "Software Engineer · Personal Project",
+      "features": [
+        "Built validated uploads and a queued worker with isolated DOCX/PDF extraction, job cancellation, and per-job snapshots of rules and terms.",
+        "Developed mechanical language checks, typo candidates, APA/IEEE citation-pattern screening, and structural checks with visible coverage and assessment limits.",
+        "Provided per-occurrence term review, user exclusions, findings reports, and PDF highlights and comments for findings with identifiable locations."
+      ],
+      "impact": "Helps authors review manuscripts with findings traceable to locations and checking rules while keeping correction decisions in the user's hands.",
+      "status": "Actively developed · Local application"
     }
   },
   {
