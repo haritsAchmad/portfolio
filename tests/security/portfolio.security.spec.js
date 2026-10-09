@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { projects } from '../../src/data/projects.js'
 
 const annotate = (testInfo, values) => {
   for (const [type, description] of Object.entries(values)) testInfo.annotations.push({ type, description })
@@ -13,9 +14,36 @@ test('public page has no common secret markers', async ({ page }, testInfo) => {
 
 test('query and project data cannot execute markup', async ({ page }, testInfo) => {
   annotate(testInfo, { endpoint: 'GET /?q=<script>… and /#projects', expected: 'No script execution', risk: 'High — XSS', root_cause: 'Unsafe HTML or query interpolation' })
-  await page.goto('/?q=%3Cscript%3Ewindow.__portfolioXss%3D1%3C%2Fscript%3E')
-  await expect(page.locator('.project-card')).toHaveCount(11)
-  expect(await page.evaluate(() => window.__portfolioXss || 0)).toBe(0)
+  const queryPayload = '<script>window.__portfolioXss=1</script><img src=x onerror="window.__portfolioXss=1">'
+  const queryUrl = `/?q=${encodeURIComponent(queryPayload)}`
+  expect(projects.length).toBeGreaterThan(0)
+
+  await test.step('query payload cannot execute', async () => {
+    await page.goto(queryUrl)
+    // The initial "all" filter must render every project in the application data.
+    await expect(page.locator('.project-card')).toHaveCount(projects.length)
+    expect(await page.evaluate(() => window.__portfolioXss || 0)).toBe(0)
+  })
+
+  await test.step('project title renders malicious markup as literal text', async () => {
+    const projectPayload = '<script>window.__portfolioXss=1</script><img src=x onerror="window.__portfolioXss=1">'
+    const originalTitle = JSON.stringify(projects[0].title)
+    // Replace only a data string in the locally served bundle, preserving the
+    // real Vue rendering code. This exercises interpolation, not DOM textContent.
+    await page.route('**/assets/*.js', async route => {
+      const response = await route.fetch()
+      const source = await response.text()
+      expect(source).toContain(originalTitle)
+      const body = source.split(originalTitle).join(JSON.stringify(projectPayload))
+      await route.fulfill({ response, body })
+    })
+    await page.reload()
+    await expect(page.locator('.project-card')).toHaveCount(projects.length)
+    await expect(page.locator('.project-title').filter({ hasText: projectPayload })).toHaveCount(1)
+    await expect(page.locator('.project-title').filter({ hasText: projectPayload })).toHaveText(projectPayload)
+    await expect(page.locator('.project-title script, .project-title img')).toHaveCount(0)
+    expect(await page.evaluate(() => window.__portfolioXss || 0)).toBe(0)
+  })
 })
 
 test('contact validation covers required, format, length, markup, repeat, and errors', async ({ page }, testInfo) => {
@@ -83,13 +111,31 @@ test('CV is intended PDF and sensitive paths are absent', async ({ request }, te
 test('external links use expected HTTPS targets and safe rel', async ({ page }, testInfo) => {
   annotate(testInfo, { endpoint: 'External links on /', expected: 'Allowlisted HTTPS and noopener noreferrer', risk: 'Medium — tabnabbing', root_cause: 'Unsafe href or missing rel' })
   await page.goto('/')
-  const links = await page.locator('a[target="_blank"]').evaluateAll(elements => elements.map(element => ({ href: element.href, rel: element.rel.split(/\s+/) })))
+  await expect(page.locator('.project-card')).toHaveCount(projects.length)
+  const pageOrigin = new URL(page.url()).origin
+  const links = await page.locator('a[href]').evaluateAll(elements => elements.map(element => ({
+    href: element.href, target: element.target, rel: element.rel.split(/\s+/),
+  })))
   const allowed = new Set(['github.com', 'www.linkedin.com', 'www.instagram.com'])
+  const webProtocols = new Set(['http:', 'https:'])
+  const externalLinks = links.filter(link => {
+    const url = new URL(link.href)
+    return webProtocols.has(url.protocol) && url.origin !== pageOrigin
+  })
+  expect(externalLinks.length).toBeGreaterThan(0)
   for (const link of links) {
     const url = new URL(link.href)
-    expect(url.protocol).toBe('https:')
-    expect(allowed.has(url.hostname), link.href).toBeTruthy()
-    expect(link.rel).toEqual(expect.arrayContaining(['noopener', 'noreferrer']))
+    // Permit intended email/telephone actions, but reject executable schemes.
+    expect(['http:', 'https:', 'mailto:', 'tel:'], link.href).toContain(url.protocol)
+    if (webProtocols.has(url.protocol) && url.origin !== pageOrigin) {
+      expect(url.protocol, link.href).toBe('https:')
+      expect(allowed.has(url.hostname), link.href).toBeTruthy()
+    }
+    // Every new-tab link needs these protections, including local certificates.
+    if (link.target.toLowerCase() === '_blank') {
+      expect(webProtocols.has(url.protocol), link.href).toBeTruthy()
+      expect(link.rel, link.href).toEqual(expect.arrayContaining(['noopener', 'noreferrer']))
+    }
   }
 })
 
