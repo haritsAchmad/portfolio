@@ -26,3 +26,25 @@ playwright-report
 *.sw?
 
 .vercel
+
+# Local environment secrets
+.env
+.env.*
+!.env.example
+
+# Private application documents and local backups
+.private-documents/
+.private-backups/
+*.doc
+*.docx
+*.odt
+*.pdf
+*.PDF
+
+# Approved public documents
+!/public/CV Harits Achmad Fauzan-Versi bahasa indonesia.pdf
+!/public/Harits_Achmad_Fauzan_Resume.pdf
+!/public/Sertifikat Kompetensi BNSP Software Engineer Harits Achmad Fauzan.pdf
+
+# Existing learning guide
+!/Panduan_Web_Portofolio.pdf
