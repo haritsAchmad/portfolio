@@ -9,3 +9,5 @@ Project ini dirancang, diarahkan, diuji, dan direview oleh Harits Achmad Fauzan.
 ## License
 
 Copyright (c) 2026 Harits Achmad Fauzan. Project ini dilisensikan menggunakan [MIT License](LICENSE).
+
+Library, program, font, dan aset pihak lain beserta lisensinya dicatat di [CREDITS.md](CREDITS.md).
