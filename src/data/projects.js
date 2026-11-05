@@ -12,6 +12,7 @@ const projectPriority = [
 export const projects = [
   {
     id: 3,
+    kind: "professional",
     title: "COSMO",
     category: "internal-tools",
     categoryName: "Internal Tools",
@@ -29,6 +30,7 @@ export const projects = [
     colorClass: "glow-modern",
     badgeColor: "#0EA5E9"
     ,en: {
+      categoryName: "Internal Tools",
       description: "Career Opportunity System and Modern Core, an internal system that centralizes candidate administration, interviews, assessments, and hiring decisions in a role-based workflow.",
       role: "Development Team Member · Professional Project",
       features: ["Contributed to the initial development of COSMO as part of the team.", "Helped develop backend endpoints, search, filtering, and selection-status management.", "Contributed to recruitment and interview-assessment interfaces with the development team."],
@@ -38,9 +40,10 @@ export const projects = [
   },
   {
     id: 4,
+    kind: "professional",
     title: "SICAKEP",
     category: "legacy-modernization",
-    categoryName: "Legacy Modernization",
+    categoryName: "Modernisasi Legacy",
     description: "Sistem Informasi Capaian Kinerja Pegawai untuk mendukung pengelolaan capaian kinerja dan digitalisasi workflow SDM.",
     role: "Development Team Member (Professional Project)",
     techStack: ["PHP", "Symfony", "PostgreSQL", "JavaScript"],
@@ -55,6 +58,7 @@ export const projects = [
     colorClass: "glow-legacy",
     badgeColor: "#EF4444"
     ,en: {
+      categoryName: "Legacy Modernization",
       description: "Sistem Informasi Capaian Kinerja Pegawai, an HR information system supporting employee-performance achievement management and workflow digitalization.",
       role: "Development Team Member · Professional Project",
       features: ["Contributed to Iterations 1 and 2 as part of the development team.", "Supported employee-performance achievement management and the digitalization of previously manual workflows.", "Performed testing, debugging, and iterative feature improvements based on internal requirements and feedback."],
@@ -64,12 +68,13 @@ export const projects = [
   },
   {
     id: 5,
+    kind: "professional",
     title: "ORBIT",
     category: "legacy-modernization",
-    categoryName: "Legacy Modernization",
+    categoryName: "Modernisasi Legacy",
     description: "Sistem Informasi Organization, Role, Business Process and Talent Analytic untuk analisis jabatan, beban kerja, data pegawai, dan workflow organisasi.",
     role: "Developer (Professional Project)",
-    techStack: ["PHP 5.3", "Symfony 1", "PostgreSQL 8.3", "JavaScript"],
+    techStack: ["Legacy PHP", "Symfony", "PostgreSQL", "JavaScript"],
     features: [
       "Menangani development Iterasi 1 dan 2, sementara kebutuhan, desain, dan pengujian melibatkan kolaborasi internal.",
       "Mengembangkan analisis jabatan dan beban kerja, pengelolaan data pegawai, monitoring, pelaporan, serta workflow organisasi.",
@@ -77,10 +82,11 @@ export const projects = [
     ],
     impact: "Mendukung digitalisasi proses organisasi dan SDM sekaligus meningkatkan keterlacakan data serta workflow internal.",
     status: "Kontribusi selesai Agustus 2026 · Source code tidak dipublikasikan",
-    primaryTech: "PHP 5.3",
+    primaryTech: "Legacy PHP",
     colorClass: "glow-legacy",
     badgeColor: "#F97316",
     en: {
+      categoryName: "Legacy Modernization",
       description: "Sistem Informasi Organization, Role, Business Process and Talent Analytic for job analysis, workload analysis, employee data, and organizational workflows.",
       role: "Developer · Professional Project",
       features: ["Handled development for Iterations 1 and 2, while requirements, design, and testing involved internal collaboration.", "Developed job and workload analysis, employee-data management, monitoring, reporting, and organizational workflows.", "Maintained the legacy application and resolved production issues involving business rules, sessions, and anomalous data."],
@@ -90,23 +96,25 @@ export const projects = [
   },
   {
     id: 6,
+    kind: "professional",
     title: "Employee Self-Service & Cooperative Management Tools",
     category: "business-systems",
-    categoryName: "Business Systems",
+    categoryName: "Sistem Bisnis",
     description: "Pengembangan beberapa tools internal untuk mendukung layanan mandiri karyawan, administrasi koperasi, pembaruan data, presensi, dan pembuatan dokumen PDF.",
     role: "IT Programmer Intern",
-    techStack: ["Angular", "TypeScript", "PHP 7.4", "Lumen", "REST API", "MySQL"],
+    techStack: ["Angular", "TypeScript", "PHP", "Lumen", "REST API", "MySQL"],
     features: [
       "Merancang dan mengembangkan Sistem Informasi Manajemen Koperasi menggunakan Angular dan PHP/Lumen API.",
       "Mengembangkan fitur pembaruan data dan sinkronisasi presensi mandiri pada modul kepegawaian.",
       "Mengimplementasikan generator PDF dinamis serta menyiapkan environment pengembangan lokal."
     ],
     impact: "Membantu mengurangi proses administrasi manual dan memusatkan beberapa kebutuhan layanan karyawan ke dalam aplikasi internal.",
-    status: "Completed · Professional project",
+    status: "Selesai · Proyek profesional",
     primaryTech: "Angular + PHP",
     colorClass: "glow-modern",
     badgeColor: "#6366F1"
     ,en: {
+      categoryName: "Business Systems",
       description: "A collection of internal tools supporting employee self-service, cooperative administration, attendance synchronization, data updates, and PDF generation.",
       role: "IT Programmer Intern · Professional Project",
       features: ["Designed and developed a cooperative management system using Angular and a PHP/Lumen API.", "Developed employee-data updates and attendance synchronization for a self-service module.", "Implemented dynamic PDF generation and prepared a compatible local development environment."],
@@ -116,9 +124,10 @@ export const projects = [
   },
   {
     id: 7,
+    kind: "professional",
     title: "SI Inventaris SBRC IPB",
     category: "business-systems",
-    categoryName: "Business Systems",
+    categoryName: "Sistem Bisnis",
     description: "Sistem informasi inventarisasi alat dan bahan penelitian laboratorium untuk membantu pencatatan stok, peminjaman, serta ketersediaan aset.",
     role: "Web Developer Intern",
     techStack: ["PHP 8.2+", "Laravel", "MySQL", "Composer", "Git"],
@@ -128,11 +137,12 @@ export const projects = [
       "Menyusun pencatatan riwayat dan ketersediaan aset agar lebih mudah ditelusuri."
     ],
     impact: "Mendigitalkan pencatatan inventaris laboratorium dan membantu pencarian data aset.",
-    status: "Completed · Professional project",
+    status: "Selesai · Proyek profesional",
     primaryTech: "Laravel",
     colorClass: "glow-modern",
     badgeColor: "#6366F1"
     ,en: {
+      categoryName: "Business Systems",
       description: "A laboratory equipment and materials inventory system for tracking stock, borrowing activity, history, and asset availability.",
       role: "Web Developer Intern · Professional Project",
       features: ["Built equipment, materials, stock, and borrowing management features.", "Adapted application workflows to laboratory inventory requirements.", "Added history and availability records to make assets easier to trace."],
@@ -142,9 +152,10 @@ export const projects = [
   },
   {
     "id": 9,
+    "kind": "personal",
     "title": "Local Agent Playground",
     "category": "ai-experimentation",
-    "categoryName": "AI Experimentation",
+    "categoryName": "Eksperimen AI",
     "description": "Coding agent lokal berbasis Go dan Ollama dengan chat streaming melalui CLI maupun web, session persisten, tool registry, dan kontrol approval di dalam workspace.",
     "role": "Software Engineer (Personal Project)",
     "techStack": [
@@ -161,11 +172,12 @@ export const projects = [
       "Mengembangkan registry tool eksternal dan mode hybrid opsional untuk pencarian web serta pembacaan halaman HTTPS dengan approval akses jaringan."
     ],
     "impact": "Mengeksplorasi fondasi coding agent local-first yang berguna sekaligus menjaga kontrol pengguna, keterlacakan, dan batas keamanan yang eksplisit.",
-    "status": "MVP · Active development · Private repository",
+    "status": "MVP · Aktif dikembangkan · Repository privat",
     "primaryTech": "Go + Ollama",
     "colorClass": "glow-ai",
     "badgeColor": "#A855F7",
     "en": {
+      "categoryName": "AI Experimentation",
       "description": "A Go and Ollama local coding agent with streaming CLI and web chat, persistent sessions, a tool registry, and approval controls within a configured workspace.",
       "role": "Software Engineer · Personal Project",
       "features": [
@@ -179,9 +191,10 @@ export const projects = [
   },
   {
     "id": 12,
+    "kind": "personal",
     "title": "naskahCheck",
     "category": "internal-tools",
-    "categoryName": "Document Tools",
+    "categoryName": "Alat Dokumen",
     "description": "Aplikasi web lokal untuk meninjau naskah akademik DOCX dan PDF melalui pemeriksaan bahasa, pola kutipan, dan aturan struktur yang dikonfigurasi pengguna.",
     "role": "Software Engineer (Personal Project)",
     "techStack": [
@@ -203,6 +216,7 @@ export const projects = [
     "colorClass": "glow-modern",
     "badgeColor": "#06B6D4",
     "en": {
+      "categoryName": "Document Tools",
       "description": "A local web application for reviewing academic DOCX and PDF manuscripts through language checks, citation-pattern screening, and user-configured structural rules.",
       "role": "Software Engineer · Personal Project",
       "features": [
@@ -216,9 +230,10 @@ export const projects = [
   },
   {
     id: 10,
+    kind: "academic",
     title: "Fishee GIS Platform",
     category: "gis-public",
-    categoryName: "GIS & Public Web",
+    categoryName: "GIS & Web Publik",
     description: "Aplikasi direktori dan pemetaan interaktif UMKM perikanan serta produk olahan ikan lokal berbasis peta digital.",
     role: "Lead Developer (Academic Project)",
     techStack: ["Native PHP 7.4", "Leaflet.js", "Bootstrap", "jQuery", "MySQL"],
@@ -228,11 +243,12 @@ export const projects = [
       "Mengembangkan pencarian, ulasan, rating, dan penyaringan data pada peta."
     ],
     impact: "Menyajikan informasi UMKM dan produk lokal melalui pengalaman pencarian berbasis peta.",
-    status: "Completed · Academic project",
+    status: "Selesai · Proyek akademik",
     primaryTech: "PHP + Leaflet",
     colorClass: "glow-public",
     badgeColor: "#10B981"
     ,en: {
+      categoryName: "GIS & Public Web",
       description: "An interactive directory and mapping platform for fisheries SMEs and locally processed fish products.",
       role: "Lead Developer · Academic Project",
       features: ["Integrated Leaflet.js with dynamic markers based on location coordinates.", "Built product CRUD features and partner-profile management.", "Developed search, reviews, ratings, and map-based data filtering."],

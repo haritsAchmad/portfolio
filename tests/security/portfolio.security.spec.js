@@ -52,7 +52,8 @@ test('contact validation covers required, format, length, markup, repeat, and er
   let status = 200
   await page.route('https://api.web3forms.com/**', route => {
     submissions += 1
-    return route.fulfill({ status, contentType: 'application/json', body: '{}' })
+    // Web3Forms confirms delivery with {"success": true}.
+    return route.fulfill({ status, contentType: 'application/json', body: JSON.stringify({ success: status === 200 }) })
   })
   await page.goto('/#contact')
   const name = page.locator('#name')
@@ -72,13 +73,14 @@ test('contact validation covers required, format, length, markup, repeat, and er
   await email.fill('security@example.test')
   await message.fill('<script>alert(1)</script>')
   await page.locator('form').evaluate(form => form.requestSubmit())
-  await expect(page.getByRole('alert')).toContainText('tidak diizinkan')
+  // The page opens in English, the default language.
+  await expect(page.getByRole('alert')).toContainText('not allowed')
   expect(submissions).toBe(0)
 
   status = 500
   await message.fill('Safe disposable test message')
   await page.locator('form').evaluate(form => form.requestSubmit())
-  await expect(page.getByRole('alert')).toContainText('gangguan')
+  await expect(page.getByRole('alert')).toContainText('something went wrong')
   status = 200
   await page.locator('form').evaluate(form => form.requestSubmit())
   await expect(page.getByText('Message sent!')).toBeVisible()
@@ -88,6 +90,9 @@ test('contact validation covers required, format, length, markup, repeat, and er
   await email.fill('security@example.test')
   await message.fill('Second message')
   await page.locator('form').evaluate(form => form.requestSubmit())
+  await expect(page.getByRole('alert')).toContainText('30 seconds')
+  // The visible error follows a language switch.
+  await page.getByRole('button', { name: 'ID', exact: true }).click()
   await expect(page.getByRole('alert')).toContainText('30 detik')
   expect(submissions).toBe(2)
 })
@@ -116,7 +121,7 @@ test('external links use expected HTTPS targets and safe rel', async ({ page }, 
   const links = await page.locator('a[href]').evaluateAll(elements => elements.map(element => ({
     href: element.href, target: element.target, rel: element.rel.split(/\s+/),
   })))
-  const allowed = new Set(['github.com', 'www.linkedin.com', 'www.instagram.com'])
+  const allowed = new Set(['github.com', 'www.linkedin.com', 'www.instagram.com', 'wa.me'])
   const webProtocols = new Set(['http:', 'https:'])
   const externalLinks = links.filter(link => {
     const url = new URL(link.href)

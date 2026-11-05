@@ -1,11 +1,14 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, nextTick } from "vue";
 import { projects } from "./data/projects";
 import CertificationsSection from "./components/CertificationsSection.vue";
 import Navbar from "./components/Navbar.vue";
 import HeroSection from "./components/HeroSection.vue";
 import ProjectFilter from "./components/ProjectFilter.vue";
 import ProjectCard from "./components/ProjectCard.vue";
+import ServicesSection from "./components/ServicesSection.vue";
+import ProcessSection from "./components/ProcessSection.vue";
+import ContactOptions from "./components/ContactOptions.vue";
 import { useI18n } from "./i18n";
 
 const { locale, t } = useI18n();
@@ -24,18 +27,69 @@ const handleFilterChange = (newFilter) => {
   activeFilter.value = newFilter;
 };
 
+// Service evidence links: make sure the card is rendered, then move to it.
+const showProject = async (id) => {
+  activeFilter.value = "all";
+  await nextTick();
+  const card = document.getElementById(`project-${id}`);
+  if (!card) return;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  card.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  card.focus({ preventScroll: true });
+  history.replaceState(null, "", `#project-${id}`);
+};
+
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
 const contactForm = ref({ name: "", email: "", message: "" });
 const botcheck = ref("");
 const formSubmitted = ref(false);
 const isSending = ref(false);
+// Holds a key from contact.errors so the message follows the selected language.
 const formError = ref("");
 
 const CONTACT_LIMITS = Object.freeze({ name: 100, email: 254, message: 2000 });
 const CONTACT_COOLDOWN_MS = 30_000;
 const LAST_CONTACT_SUBMISSION_KEY = "portfolio_last_contact_submission";
 const unsafeMarkupPattern = /<\/?[a-z][\s\S]*?>|javascript:/i;
+const SUCCESS_VISIBLE_MS = 4000;
+
+// The cooldown is remembered in localStorage when the browser allows it, and
+// always in memory for this page, so blocked storage never breaks the form.
+let lastSubmissionInPage = 0;
+const readLastSubmission = () => {
+  try {
+    return Number(localStorage.getItem(LAST_CONTACT_SUBMISSION_KEY) || 0);
+  } catch {
+    return 0;
+  }
+};
+const rememberSubmission = (at) => {
+  lastSubmissionInPage = at;
+  try {
+    localStorage.setItem(LAST_CONTACT_SUBMISSION_KEY, String(at));
+  } catch {
+    // Storage blocked or full: the in-page value still enforces the cooldown.
+  }
+};
+
+// Screen readers hear the confirmation through the status region around it;
+// keyboard focus moves to the confirmation (the submit button disappears) and
+// back to the form when the form returns.
+const successMessage = ref(null);
+const firstContactField = ref(null);
+
+const showSuccess = async () => {
+  formSubmitted.value = true;
+  await nextTick();
+  successMessage.value?.focus();
+  setTimeout(async () => {
+    const hadFocus = Boolean(successMessage.value?.contains(document.activeElement));
+    formSubmitted.value = false;
+    await nextTick();
+    if (hadFocus) firstContactField.value?.focus();
+  }, SUCCESS_VISIBLE_MS);
+};
 
 const submitForm = async () => {
   formError.value = "";
@@ -43,7 +97,7 @@ const submitForm = async () => {
 
   const { name, email, message } = contactForm.value;
   if (!name || !email || !message) {
-    formError.value = "Semua field wajib diisi.";
+    formError.value = "required";
     return;
   }
   if (
@@ -51,17 +105,17 @@ const submitForm = async () => {
     email.length > CONTACT_LIMITS.email ||
     message.length > CONTACT_LIMITS.message
   ) {
-    formError.value = "Pesan melebihi batas panjang yang diizinkan.";
+    formError.value = "tooLong";
     return;
   }
   if (unsafeMarkupPattern.test(`${name}\n${message}`)) {
-    formError.value = "HTML, script, dan URL JavaScript tidak diizinkan.";
+    formError.value = "markup";
     return;
   }
 
-  const lastSubmission = Number(localStorage.getItem(LAST_CONTACT_SUBMISSION_KEY) || 0);
+  const lastSubmission = Math.max(readLastSubmission(), lastSubmissionInPage);
   if (Date.now() - lastSubmission < CONTACT_COOLDOWN_MS) {
-    formError.value = "Mohon tunggu 30 detik sebelum mengirim pesan berikutnya.";
+    formError.value = "cooldown";
     return;
   }
 
@@ -87,18 +141,19 @@ const submitForm = async () => {
     });
 
     if (!response.ok) throw new Error("Gagal mengirim pesan");
-
-    localStorage.setItem(LAST_CONTACT_SUBMISSION_KEY, String(Date.now()));
-    formSubmitted.value = true;
-    contactForm.value = { name: "", email: "", message: "" };
-    setTimeout(() => {
-      formSubmitted.value = false;
-    }, 4000);
+    // Web3Forms confirms delivery with {"success": true}; anything else is a failure.
+    const result = await response.json().catch(() => null);
+    if (result?.success !== true) throw new Error("Pengiriman tidak dikonfirmasi");
   } catch (error) {
-    formError.value = "Oops! Terjadi gangguan saat mengirim pesan.";
+    formError.value = "failed";
+    return;
   } finally {
     isSending.value = false;
   }
+
+  rememberSubmission(Date.now());
+  contactForm.value = { name: "", email: "", message: "" };
+  await showSuccess();
 };
 </script>
 
@@ -107,7 +162,9 @@ const submitForm = async () => {
     <div class="glow-orb orb-left"></div>
     <div class="glow-orb orb-right"></div>
 
+    <a href="#main-content" class="skip-link">{{ t("nav.skip") }}</a>
     <Navbar />
+    <main id="main-content" tabindex="-1">
     <HeroSection />
 
     <section id="about" class="section about-section">
@@ -128,7 +185,7 @@ const submitForm = async () => {
               <span class="edu-icon">🎓</span>
               <div class="edu-info">
                 <span class="edu-uni">IPB University</span>
-                <span class="edu-degree">Bachelor of Applied Computer Science</span>
+                <span class="edu-degree">{{ t("about.degree") }}</span>
               <span class="edu-date">{{ locale === "en" ? "August 2021 - October 2025 (GPA 3.54)" : "Agustus 2021 - Oktober 2025 (IPK 3.54)" }}</span>
               </div>
             </div>
@@ -141,7 +198,7 @@ const submitForm = async () => {
                   <span class="skill-tag">Go</span>
                   <span class="skill-tag">Gin</span>
                   <span class="skill-tag">PHP</span>
-                  <span class="skill-tag">Symfony 1</span>
+                  <span class="skill-tag">Symfony</span>
                   <span class="skill-tag">Laravel / Lumen</span>
                   <span class="skill-tag">REST API</span>
                   <span class="skill-tag">SQL</span>
@@ -168,7 +225,7 @@ const submitForm = async () => {
                   <span class="skill-tag">MySQL / MariaDB</span>
                   <span class="skill-tag">Git</span>
                   <span class="skill-tag">Postman</span>
-                  <span class="skill-tag">Docker (Learning)</span>
+                  <span class="skill-tag">Docker ({{ t("about.learning") }})</span>
                   <span class="skill-tag">Ollama</span>
                 </div>
               </div>
@@ -238,12 +295,12 @@ const submitForm = async () => {
                   <ul v-if="locale === 'id'" class="job-details">
                     <li>Mengembangkan generator PDF dinamis serta fitur pembaruan data dan sinkronisasi presensi mandiri.</li>
                     <li>Merancang dan mengembangkan Sistem Informasi Manajemen Koperasi menggunakan Angular, TypeScript, PHP/Lumen, REST API, dan MySQL.</li>
-                    <li>Menyiapkan environment pengembangan lokal agar kompatibel dengan PHP 7.4.</li>
+                    <li>Menyiapkan environment pengembangan lokal yang kompatibel dengan versi PHP aplikasi yang ada.</li>
                   </ul>
                   <ul v-else class="job-details">
                     <li>Developed dynamic PDF generation, employee-data updates, and attendance synchronization features.</li>
                     <li>Designed and developed a cooperative management system using Angular, TypeScript, PHP/Lumen, REST APIs, and MySQL.</li>
-                    <li>Prepared a local development environment compatible with PHP 7.4.</li>
+                    <li>Prepared a local development environment compatible with the application's PHP version.</li>
                   </ul>
                 </div>
               </div>
@@ -296,6 +353,9 @@ const submitForm = async () => {
       </div>
     </section>
 
+    <ServicesSection @show-project="showProject" />
+    <ProcessSection />
+
     <section id="contact" class="section contact-section">
       <div class="container animate-fade-in">
         <h2 class="section-title">{{ t("contact.title") }}</h2>
@@ -309,6 +369,8 @@ const submitForm = async () => {
             <p class="info-desc">
               {{ t("contact.description") }}
             </p>
+
+            <ContactOptions id-prefix="contact" class="info-options" />
 
             <div class="info-details">
               <div class="info-item">
@@ -345,37 +407,48 @@ const submitForm = async () => {
               />
               <div class="form-group">
                 <label for="name">{{ t("contact.formName") }}</label>
-                <input id="name" v-model="contactForm.name" required maxlength="100" :placeholder="t('contact.namePlaceholder')" class="glass-input" />
+                <input id="name" ref="firstContactField" v-model="contactForm.name" required maxlength="100" :placeholder="t('contact.namePlaceholder')" class="glass-input" />
               </div>
               <div class="form-group">
                 <label for="email">{{ t("contact.formEmail") }}</label>
-                <input id="email" v-model="contactForm.email" type="email" required maxlength="254" placeholder="email@contoh.com" class="glass-input" />
+                <input id="email" v-model="contactForm.email" type="email" required maxlength="254" :placeholder="t('contact.emailPlaceholder')" class="glass-input" />
               </div>
               <div class="form-group">
                 <label for="message">{{ t("contact.formMessage") }}</label>
                 <textarea id="message" v-model="contactForm.message" rows="4" required maxlength="2000" :placeholder="t('contact.messagePlaceholder')" class="glass-input"></textarea>
               </div>
-              <p v-if="formError" class="form-error" role="alert">{{ formError }}</p>
+              <p v-if="formError" class="form-error" role="alert">{{ t(`contact.errors.${formError}`) }}</p>
               <button type="submit" class="submit-btn" :disabled="isSending">
                 {{ isSending ? t("contact.sending") : t("contact.send") }}
               </button>
             </form>
 
-            <div v-else class="success-message">
-              <span class="success-icon">✓</span>
-              <h3 class="success-title">{{ t("contact.success") }}</h3>
-              <p class="success-desc">{{ t("contact.successDescription") }}</p>
+            <!-- Always in the page so the confirmation inserted into it is announced. -->
+            <div class="contact-status" role="status" aria-live="polite" aria-atomic="true">
+              <div v-if="formSubmitted" ref="successMessage" class="success-message" tabindex="-1">
+                <span class="success-icon" aria-hidden="true">✓</span>
+                <h3 class="success-title">{{ t("contact.success") }}</h3>
+                <p class="success-desc">{{ t("contact.successDescription") }}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    </main>
 
     <footer class="footer">
       <div class="container footer-content">
-        <p>&copy; 2026 Harits.Dev. All rights reserved.</p>
-        <p>Crafted with Vue 3 & Vite</p>
+        <p>&copy; 2026 Harits.Dev. {{ t("footer.rights") }}</p>
+        <p>{{ t("footer.built") }}</p>
       </div>
+      <details id="privacy" class="container privacy-notice">
+        <summary>{{ t("privacy.title") }}</summary>
+        <p>{{ t("privacy.analytics") }}</p>
+        <p>{{ t("privacy.form") }}</p>
+        <p>{{ t("privacy.providers") }}</p>
+        <p>{{ t("privacy.retention") }}</p>
+      </details>
     </footer>
   </div>
 </template>
@@ -514,6 +587,7 @@ const submitForm = async () => {
 }
 .info-title { font-size: 1.5rem; margin-bottom: 1rem; }
 .info-desc { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 2rem; }
+.info-options { margin-bottom: 2rem; }
 .info-details { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem; }
 .info-item {
   display: grid;
@@ -565,7 +639,8 @@ const submitForm = async () => {
   font-family: var(--font-main);
   font-size: 0.95rem;
 }
-.glass-input:focus { outline: none; border-color: var(--color-modern); box-shadow: 0 0 12px rgba(99, 102, 241, 0.15); }
+/* No outline reset here: the shared :focus-visible outline in style.css stays visible. */
+.glass-input:focus { border-color: var(--color-modern); box-shadow: 0 0 12px rgba(99, 102, 241, 0.15); }
 .submit-btn {
   background: var(--color-modern);
   color: #fff;
@@ -578,11 +653,16 @@ const submitForm = async () => {
 }
 .submit-btn:hover { transform: translateY(-1px); }
 .submit-btn:disabled { opacity: 0.65; cursor: wait; }
+.success-message:focus { outline: none; }
+.success-message:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 3px; }
 .success-message { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; padding: 2rem 0; }
 .success-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(16, 185, 129, 0.1); color: var(--color-public); font-size: 1.5rem; margin-bottom: 1.25rem; }
 .success-desc { font-size: 0.9rem; color: var(--text-secondary); }
 .footer { border-top: 1px solid var(--border-glass); padding: 2rem 0; background: rgba(11, 15, 25, 0.8); }
 .footer-content { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.85rem; }
+.privacy-notice { margin-top: 1.25rem; color: var(--text-muted); font-size: 0.8rem; line-height: 1.6; }
+.privacy-notice summary { cursor: pointer; color: var(--text-secondary); font-weight: 600; width: fit-content; }
+.privacy-notice p { margin-top: 0.6rem; max-width: 760px; }
 
 @media (max-width: 868px) {
   .about-grid,
