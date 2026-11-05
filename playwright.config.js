@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
+import { TEST_WEB3FORMS_ACCESS_KEY } from './tests/security/test-env.js'
 
 export default defineConfig({
   testDir: './tests/security',
@@ -19,7 +20,12 @@ export default defineConfig({
   },
   projects: [
     { name: 'chromium-desktop', use: { ...devices['Desktop Chrome'] } },
-    { name: 'firefox-desktop', use: { ...devices['Desktop Firefox'] } },
+    // Headless Firefox renders and records video in software. With six browsers
+    // recording at once, Firefox sometimes stalled for 30s in setViewportSize,
+    // goto, or context close (never in a test body) and passed when run alone.
+    // Limiting Firefox to two concurrent workers removed those stalls in
+    // repeated full runs; the other projects keep the global worker count.
+    { name: 'firefox-desktop', workers: 2, use: { ...devices['Desktop Firefox'] } },
     { name: 'chromium-mobile', use: { ...devices['Pixel 5'] } },
   ],
   webServer: {
@@ -27,5 +33,8 @@ export default defineConfig({
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: false,
     timeout: 120_000,
+    // The test build gets a placeholder key instead of any real key from
+    // .env.local or the shell (see tests/security/test-env.js).
+    env: { VITE_WEB3FORMS_ACCESS_KEY: TEST_WEB3FORMS_ACCESS_KEY },
   },
 })

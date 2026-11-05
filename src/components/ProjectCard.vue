@@ -12,7 +12,8 @@ defineProps({
 </script>
 
 <template>
-  <div class="project-card glass" :class="project.colorClass">
+  <!-- Anchor target for service evidence links (ServicesSection). -->
+  <div :id="`project-${project.id}`" class="project-card glass" :class="project.colorClass" tabindex="-1">
     <div
       class="card-glow"
       :style="{
@@ -97,6 +98,12 @@ defineProps({
   height: 100%;
   overflow: hidden;
   transition: var(--transition-smooth);
+  scroll-margin-top: 90px;
+}
+
+.project-card:focus-visible {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 4px;
 }
 
 .card-glow {

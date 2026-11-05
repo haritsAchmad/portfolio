@@ -27,8 +27,10 @@ const filters = computed(() => [
     <button
       v-for="filter in filters"
       :key="filter.value"
+      type="button"
       class="filter-btn"
       :class="{ active: activeFilter === filter.value }"
+      :aria-pressed="activeFilter === filter.value"
       @click="$emit('change-filter', filter.value)"
     >
       {{ filter.label }}

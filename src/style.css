@@ -8,7 +8,8 @@
   
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  /* 4.9:1 on --bg-secondary and 5.5:1 on --bg-primary (WCAG AA for small text). */
+  --text-muted: #7c8aa0;
   
   /* Category colors */
   --color-legacy: #ef4444; /* Rose/Red */
@@ -76,6 +77,53 @@ body {
   .language-changing #app {
     animation: none;
   }
+
+  /* Entrance, pulse, hover lift, and smooth scrolling are decorative. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  background: var(--color-modern);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+#main-content:focus {
+  outline: none;
+}
+
+/* Keep anchored headings clear of the fixed navbar. */
+section[id],
+header[id] {
+  scroll-margin-top: 90px;
 }
 
 /* Custom Scrollbar */

@@ -28,6 +28,7 @@ const { cvUrl, cvFilename } = useCv();
 
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary">{{ t("hero.projects") }}</a>
+          <a href="#services" class="btn btn-primary btn-services">{{ t("hero.services") }}</a>
           <a
             :href="cvUrl"
             :download="cvFilename"
@@ -44,7 +45,7 @@ const { cvUrl, cvFilename } = useCv();
         <div class="avatar-frame glass">
           <img
             src="../assets/harits_photo.jpeg"
-            alt="Foto Harits Achmad Fauzan"
+            :alt="t('hero.photoAlt')"
             class="avatar-img"
           />
         </div>
@@ -196,7 +197,19 @@ const { cvUrl, cvFilename } = useCv();
 
 .hero-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+}
+
+/* Second primary call to action, for visitors looking for services. */
+.btn-services {
+  background-color: transparent;
+  color: #c7d2fe;
+  box-shadow: none;
+}
+
+.btn-services:hover {
+  background-color: rgba(99, 102, 241, 0.15);
 }
 
 .btn {
