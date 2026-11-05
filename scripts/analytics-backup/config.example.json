@@ -1,0 +1,9 @@
+{
+  "host": "<ep-xxxxxxxx.region.aws.neon.tech>",
+  "port": 5432,
+  "database": "neondb",
+  "user": "analytics_backup",
+  "sslMode": "require",
+  "psqlPath": "",
+  "taskName": "Portfolio Analytics Backup"
+}
