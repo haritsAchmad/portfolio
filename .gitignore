@@ -35,6 +35,9 @@ playwright-report
 # Private application documents and local backups
 .private-documents/
 .private-backups/
+
+# Local analytics backup: config, encrypted credential, CSV archives, checkpoint, logs
+.analytics-backup/
 *.doc
 *.docx
 *.odt
@@ -45,6 +48,3 @@ playwright-report
 !/public/CV Harits Achmad Fauzan-Versi bahasa indonesia.pdf
 !/public/Harits_Achmad_Fauzan_Resume.pdf
 !/public/Sertifikat Kompetensi BNSP Software Engineer Harits Achmad Fauzan.pdf
-
-# Existing learning guide
-!/Panduan_Web_Portofolio.pdf

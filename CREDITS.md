@@ -24,10 +24,6 @@ BSD-2-Clause 1, ISC 1. Alat pengembangan ([Vite](https://vitejs.dev/),
 [Playwright](https://playwright.dev/) Apache-2.0, PostCSS) tidak ikut di
 hasil build.
 
-`generate_pdf.py` (membuat panduan PDF) memakai
-[fpdf2](https://github.com/py-pdf/fpdf2) (LGPL-3.0), dipasang terpisah,
-tidak ikut di situs.
-
 ## Font
 
 - **[Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans)**
