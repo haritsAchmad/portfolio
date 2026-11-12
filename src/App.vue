@@ -186,7 +186,7 @@ const submitForm = async () => {
               <div class="edu-info">
                 <span class="edu-uni">IPB University</span>
                 <span class="edu-degree">{{ t("about.degree") }}</span>
-              <span class="edu-date">{{ locale === "en" ? "August 2021 - October 2025 (GPA 3.54)" : "Agustus 2021 - Oktober 2025 (IPK 3.54)" }}</span>
+              <span class="edu-date">{{ locale === "en" ? "August 2021 - August 2025 (GPA 3.54)" : "Agustus 2021 - Agustus 2025 (IPK 3.54)" }}</span>
               </div>
             </div>
 
